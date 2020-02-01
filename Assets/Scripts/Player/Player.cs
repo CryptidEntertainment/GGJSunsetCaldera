@@ -29,13 +29,14 @@ namespace Peng {
         public float pitchSpeed = 1f;
         public float jumpSpeed = 2f;
         public float runModifier = 2f;
-        public float health = 3;
+        public int maxHealth = 3;
 
         private bool lockCursor = true;
         private bool mlMode = true;
         private int maxJumpCount = 2;
         private int jumpsRemaining;
         private float maxIFrames = 1.5f;
+        private int health;
 
         private Camera mainCamera;
         private Quaternion rotation;

@@ -14,6 +14,7 @@ namespace Peng {
         public float movementSpeed = 1f;
         public float waypointDelay = 0.25f;
         public float maxRadius = 96f;
+        public float knockbackSpeed = 8;
         public Transform startingPosition;
 
         private int waypointIndex = 0;
@@ -51,6 +52,7 @@ namespace Peng {
             Player player = c.gameObject.GetComponent<Player>();
             if (player) {
                 player.Damage();
+                player.GetComponent<Rigidbody>().velocity = knockbackSpeed * (player.transform.position - transform.position);
             }
         }
 
