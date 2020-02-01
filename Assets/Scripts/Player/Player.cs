@@ -4,6 +4,8 @@ using UnityEngine;
 
 namespace Peng {
     public class Player : MonoBehaviour {
+        const bool JUMP_INFINITE = true;
+
         public float movementSpeed = 5f;
         public float rotationSpeed = 1f;
         public float pitchSpeed = 1f;
@@ -52,7 +54,7 @@ namespace Peng {
                 transform.position = position;
             }
 
-            if (jump && feet.JumpAvailable) {
+            if (jump && (feet.JumpAvailable || JUMP_INFINITE)) {
                 Rigidbody rb = GetComponent<Rigidbody>();
                 rb.AddForce(Vector3.up * jumpSpeed);
             }
