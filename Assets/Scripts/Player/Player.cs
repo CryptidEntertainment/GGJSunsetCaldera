@@ -3,8 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Peng {
+    enum CollisionMasks {
+        DEFAULT                 = 0x0001,
+        TRANSPARENT_FX          = 0x0002,
+        IGNORE_RAYCAST          = 0x0004,
+        THREE                   = 0x0008,
+        WATER                   = 0x0010,
+        UI                      = 0x0020,
+        SIX                     = 0x0040,
+        SEVEN                   = 0x0080,
+        TERRAIN                 = 0x0100,
+    }
+
     public class Player : MonoBehaviour {
-        const bool JUMP_INFINITE = true;
+        const bool JUMP_INFINITE = false;
 
         public float movementSpeed = 5f;
         public float rotationSpeed = 1f;
@@ -16,38 +28,39 @@ namespace Peng {
 
         private Camera mainCamera;
         private Quaternion rotation;
-        private PlayerFeet feet;
 
         void Start() {
             mainCamera = GetComponentInChildren<Camera>();
             rotation = transform.rotation;
-            feet = GetComponentInChildren<PlayerFeet>();
         }
 
         void FixedUpdate() {
             // Gather input
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-            bool jump = Input.GetButtonDown("Jump");
 
             horizontal = ((horizontal > 0) ? 1 : ((horizontal < 0) ? -1 : 0));
             vertical = ((vertical > 0) ? 1 : ((vertical < 0) ? -1 : 0));
 
-            PlayerMovement(horizontal, vertical, jump);
+            PlayerMovement(horizontal, vertical);
         }
 
         void Update() {
             float mouseHorizontal = Input.GetAxis("Mouse X");
             float mouseVertical = Input.GetAxis("Mouse Y");
+            bool jump = Input.GetButtonDown("Jump");
 
-            //Updates every frame. If the player's in mouselook mode, it runs the function that does the work and checks to see if they want to lock/unlock the mouse.
             if (mlMode) {
                 if (lockCursor) CameraLook(mouseHorizontal, mouseVertical);
                 UpdateCursorLock();
             }
+
+            if (jump && (JumpAvailable() || JUMP_INFINITE)) {
+                Jump();
+            }
         }
 
-        private void PlayerMovement(float horizontal, float vertical, bool jump) {
+        private void PlayerMovement(float horizontal, float vertical) {
             // Movement
             if (Mathf.Sqrt(horizontal * horizontal + vertical * vertical) > 0) {
                 // trigonometry functions return radians but transform stuff uses degrees
@@ -56,12 +69,17 @@ namespace Peng {
                 position = position + Quaternion.Euler(0f, movementAngle, 0f) * Vector3.right * movementSpeed * Time.deltaTime;
                 transform.position = position;
             }
+        }
 
-            if (jump && (feet.JumpAvailable || JUMP_INFINITE)) {
-                Rigidbody rb = GetComponent<Rigidbody>();
-                rb.AddForce(Vector3.up * jumpSpeed);
-            }
+        public void Jump() {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            rb.AddForce(Vector3.up * jumpSpeed);
+        }
 
+        public bool JumpAvailable() {
+            CapsuleCollider collider = GetComponent<CapsuleCollider>();
+            Vector3 halfHeight = Vector3.up * (collider.height - collider.radius);
+            return Physics.CapsuleCast(transform.position - halfHeight, transform.position - halfHeight, collider.radius * 0.5f, Vector3.down, 1, ((int)CollisionMasks.TERRAIN));
         }
 
         #region Scott's camera code
