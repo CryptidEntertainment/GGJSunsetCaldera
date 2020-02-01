@@ -13,6 +13,7 @@ namespace Peng {
         SIX                     = 0x0040,
         SEVEN                   = 0x0080,
         TERRAIN                 = 0x0100,
+        PROJECTILE              = 0x0200,
     }
 
     public class Player : MonoBehaviour {

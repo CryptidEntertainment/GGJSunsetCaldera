@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 155972616873562391}
   - component: {fileID: 155972616873562473}
   - component: {fileID: 155972616873562390}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -80,6 +80,7 @@ MonoBehaviour:
   rotationSpeed: 2
   pitchSpeed: 2
   jumpSpeed: 640
+  runModifier: 2
 --- !u!1 &155972617223699545
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +92,7 @@ GameObject:
   - component: {fileID: 155972617223699548}
   - component: {fileID: 155972617223699547}
   - component: {fileID: 155972617223699546}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}

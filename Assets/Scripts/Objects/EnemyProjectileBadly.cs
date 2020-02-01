@@ -5,6 +5,7 @@ using Scott;
 
 namespace Peng {
     public class EnemyProjectileBadly: InteractiveObject {
+        public float throwSpeed = 1f;
         // for best results, this should be a prefab that interacts with the physics system unnecessarily
         public GameObject projectilePrefab;
 
@@ -21,6 +22,7 @@ namespace Peng {
                 if (projectilePrefab) {
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Projectile>();
                     projectile.direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                    projectile.speed = throwSpeed;
                 }
             }
         }
