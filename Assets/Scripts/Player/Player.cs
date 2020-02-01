@@ -16,6 +16,11 @@ namespace Peng {
     }
 
     public class Player : MonoBehaviour {
+        // I'm allowed just one singleton, okay?
+        public static Player Me {
+            get; private set;
+        }
+
         const bool JUMP_INFINITE = false;
 
         public float movementSpeed = 5f;
@@ -32,7 +37,14 @@ namespace Peng {
         private Camera mainCamera;
         private Quaternion rotation;
 
-        void Start() {
+        void Awake() {
+            if (Me) {
+                Destroy(gameObject);
+                return;
+            }
+
+            Me = this;
+
             mainCamera = GetComponentInChildren<Camera>();
             rotation = transform.rotation;
             jumpsRemaining = maxJumpCount;
