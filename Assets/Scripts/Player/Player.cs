@@ -29,14 +29,21 @@ namespace Peng {
         public float pitchSpeed = 1f;
         public float jumpSpeed = 2f;
         public float runModifier = 2f;
+        public int maxHealth = 3;
 
         private bool lockCursor = true;
         private bool mlMode = true;
         private int maxJumpCount = 2;
         private int jumpsRemaining;
+        private float maxIFrames = 1.5f;
+        private int health;
 
         private Camera mainCamera;
         private Quaternion rotation;
+
+        public float IFrames {
+            get; private set;
+        } = 0;
 
         void Awake() {
             if (Me) {
@@ -77,6 +84,8 @@ namespace Peng {
             if (jump && (JumpAvailable() || JUMP_INFINITE || jumpsRemaining > 0)) {
                 Jump();
             }
+
+            IFrames = Mathf.Max(0f, IFrames - Time.deltaTime);
         }
 
         private void PlayerMovement(float horizontal, float vertical, float speedModifier) {
@@ -145,5 +154,22 @@ namespace Peng {
             }
         }
         #endregion
+
+        public void Damage(int amount = 1) {
+            if (IFrames > 0) {
+                return;
+            }
+
+            health = health - amount;
+            IFrames = maxIFrames;
+            if (health <= 0) {
+                Die();
+            }
+            Debug.Log("Ow!");
+        }
+
+        public void Die() {
+            Debug.Log("YOU TRIED");
+        }
     }
 }
