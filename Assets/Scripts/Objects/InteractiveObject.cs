@@ -5,8 +5,11 @@ namespace Scott
 {
     public class InteractiveObject : MonoBehaviour
     {
-        private bool interacting;
+        protected bool interacting;
         public float weight;
+        protected GameObject moveTarget;
+
+
 
 
     }
