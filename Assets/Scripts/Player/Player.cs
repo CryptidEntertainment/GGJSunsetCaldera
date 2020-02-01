@@ -22,6 +22,7 @@ namespace Peng {
         public float rotationSpeed = 1f;
         public float pitchSpeed = 1f;
         public float jumpSpeed = 2f;
+        public float runModifier = 2f;
 
         private bool lockCursor = true;
         private bool mlMode = true;
@@ -41,11 +42,13 @@ namespace Peng {
             // Gather input
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-
+            float run = Input.GetAxis("Run");
+            
             horizontal = ((horizontal > 0) ? 1 : ((horizontal < 0) ? -1 : 0));
             vertical = ((vertical > 0) ? 1 : ((vertical < 0) ? -1 : 0));
+            run = (run > 0) ? runModifier : 1f;
 
-            PlayerMovement(horizontal, vertical);
+            PlayerMovement(horizontal, vertical, run);
         }
 
         void Update() {
@@ -63,13 +66,13 @@ namespace Peng {
             }
         }
 
-        private void PlayerMovement(float horizontal, float vertical) {
+        private void PlayerMovement(float horizontal, float vertical, float speedModifier) {
             // Movement
             if (Mathf.Sqrt(horizontal * horizontal + vertical * vertical) > 0) {
                 // trigonometry functions return radians but transform stuff uses degrees
                 float movementAngle = Mathf.Atan2(-vertical, horizontal) * Mathf.Rad2Deg + rotation.eulerAngles.y;
                 Vector3 position = transform.position;
-                position = position + Quaternion.Euler(0f, movementAngle, 0f) * Vector3.right * movementSpeed * Time.deltaTime;
+                position = position + Quaternion.Euler(0f, movementAngle, 0f) * Vector3.right * movementSpeed * speedModifier * Time.deltaTime;
                 transform.position = position;
             }
         }
