@@ -39,12 +39,14 @@ namespace Peng {
             switch (state) {
                 case RoombaStates.IDLE:
                     SeekWaypoint();
+                    DetectPlayer();
                     break;
                 case RoombaStates.CHASE:
                     ChasePlayer();
                     break;
                 case RoombaStates.RETREAT:
                     RetreatToWaypoint();
+                    SeekWaypoint();
                     break;
             }
 
@@ -61,6 +63,13 @@ namespace Peng {
 
         private float DistanceToPlayer() {
             return Vector3.Distance(Player.Me.transform.position, transform.position);
+        }
+
+        private void DetectPlayer() {
+            if (DistanceToPlayer() < PLAYER_DETECT_RADIUS) {
+                state = RoombaStates.CHASE;
+                return;
+            }
         }
 
         private void ChasePlayer() {
@@ -82,28 +91,23 @@ namespace Peng {
                 return;
             }
 
-            if (DistanceToPlayer() < PLAYER_DETECT_RADIUS) {
-                state = RoombaStates.CHASE;
-                return;
-            }
-
             if (Vector3.Distance(waypoints[waypointIndex].position, transform.position) < movementSpeed * Time.deltaTime) {
                 transform.position = waypoints[waypointIndex].position;
                 waypointIndex = ++waypointIndex % waypoints.Count;
                 waypointCooldown = waypointDelay;
+                state = RoombaStates.IDLE;
             } else {
                 transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].position, movementSpeed * Time.deltaTime);
             }
         }
 
         private void RetreatToWaypoint() {
-            int waypointIndex = 0;
+            waypointIndex = 0;
             for (int i = 1; i < waypoints.Count; i++) {
                 if (Vector3.Distance(waypoints[i].position, transform.position) < Vector3.Distance(waypoints[waypointIndex].position, transform.position)) {
                     waypointIndex = i;
                 }
             }
-            state = RoombaStates.IDLE;
         }
     }
 }
