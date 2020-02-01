@@ -47,6 +47,13 @@ namespace Peng {
             }
         }
 
+        void OnCollisionStay(Collision c) {
+            Player player = c.gameObject.GetComponent<Player>();
+            if (player) {
+                player.Damage();
+            }
+        }
+
         private float DistanceToPlayer() {
             return Vector3.Distance(Player.Me.transform.position, transform.position);
         }
