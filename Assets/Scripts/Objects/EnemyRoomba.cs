@@ -15,6 +15,7 @@ namespace Peng {
         public float waypointDelay = 0.25f;
         public float maxRadius = 96f;
         public float knockbackSpeed = 8;
+        public float rotationSpeed = 720f;
         public Transform startingPosition;
 
         private int waypointIndex = 0;
@@ -46,6 +47,8 @@ namespace Peng {
                     RetreatToWaypoint();
                     break;
             }
+
+            transform.rotation *= Quaternion.Euler(0f, rotationSpeed * Time.deltaTime, 0f);
         }
 
         void OnCollisionStay(Collision c) {
