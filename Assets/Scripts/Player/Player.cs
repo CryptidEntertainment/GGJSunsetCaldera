@@ -14,10 +14,12 @@ namespace Peng {
 
         private Camera mainCamera;
         private Quaternion rotation;
+        private PlayerFeet feet;
 
         void Start() {
             mainCamera = GetComponentInChildren<Camera>();
             rotation = transform.rotation;
+            feet = GetComponentInChildren<PlayerFeet>();
         }
 
         void Update() {
@@ -50,7 +52,7 @@ namespace Peng {
                 transform.position = position;
             }
 
-            if (jump) {
+            if (jump && feet.JumpAvailable) {
                 Rigidbody rb = GetComponent<Rigidbody>();
                 rb.AddForce(Vector3.up * jumpSpeed);
             }
