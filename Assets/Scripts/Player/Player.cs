@@ -18,15 +18,18 @@ public class Player : MonoBehaviour {
         float mouseHorizontal = Input.GetAxis("Mouse X");
         float mouseVertical = Input.GetAxis("Mouse Y");
 
+        horizontal = ((horizontal > 0) ? 1 : ((horizontal < 0) ? -1 : 0));
+        vertical = ((vertical > 0) ? 1 : ((vertical < 0) ? -1 : 0));
+
         Quaternion rotation = transform.rotation;
-        rotation = Quaternion.Euler(0f, rotation.y + Time.deltaTime * rotationSpeed * mouseHorizontal, 0f);
+        rotation = rotation * Quaternion.Euler(0f, mouseHorizontal, 0f);
         transform.rotation = rotation;
         
         if (Mathf.Sqrt(horizontal * horizontal + vertical * vertical) > 0) {
-            float movementAngle = Mathf.Atan2(-vertical, horizontal) + rotation.y;
-            
+            // degrees
+            float movementAngle = Mathf.Atan2(-vertical, horizontal) * Mathf.Rad2Deg + rotation.eulerAngles.y;
             Vector3 position = transform.position;
-            position = position + Quaternion.Euler(0f, movementAngle * Mathf.Rad2Deg + rotation.y, 0f) * Vector3.right * movementSpeed * Time.deltaTime;
+            position = position + Quaternion.Euler(0f, movementAngle, 0f) * Vector3.right * movementSpeed * Time.deltaTime;
             transform.position = position;
         }
     }
