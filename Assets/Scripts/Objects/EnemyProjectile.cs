@@ -19,7 +19,7 @@ namespace Peng {
 
                 if (projectilePrefab) {
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Projectile>();
-                    projectile.direction = GameObject.FindWithTag("Player").GetComponent<Player>().transform.position - transform.position;
+                    projectile.direction = Player.Me.GetComponent<Player>().transform.position - transform.position;
                 }
             }
         }
