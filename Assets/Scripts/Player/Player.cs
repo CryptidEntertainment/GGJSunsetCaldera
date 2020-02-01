@@ -24,18 +24,21 @@ namespace Peng {
             feet = GetComponentInChildren<PlayerFeet>();
         }
 
-        void Update() {
+        void FixedUpdate() {
             // Gather input
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
-            float mouseHorizontal = Input.GetAxis("Mouse X");
-            float mouseVertical = Input.GetAxis("Mouse Y");
             bool jump = Input.GetButtonDown("Jump");
 
             horizontal = ((horizontal > 0) ? 1 : ((horizontal < 0) ? -1 : 0));
             vertical = ((vertical > 0) ? 1 : ((vertical < 0) ? -1 : 0));
 
             PlayerMovement(horizontal, vertical, jump);
+        }
+
+        void Update() {
+            float mouseHorizontal = Input.GetAxis("Mouse X");
+            float mouseVertical = Input.GetAxis("Mouse Y");
 
             //Updates every frame. If the player's in mouselook mode, it runs the function that does the work and checks to see if they want to lock/unlock the mouse.
             if (mlMode) {

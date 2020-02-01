@@ -340,8 +340,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 5
-  rotationSpeed: 2
-  pitchSpeed: 2
+  rotationSpeed: 4
+  pitchSpeed: 4
   jumpSpeed: 200
 --- !u!1 &576462582
 GameObject:
