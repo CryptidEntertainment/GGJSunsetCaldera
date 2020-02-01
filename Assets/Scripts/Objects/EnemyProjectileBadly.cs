@@ -4,7 +4,7 @@ using UnityEngine;
 using Scott;
 
 namespace Peng {
-    public class EnemyProjectile: InteractiveObject {
+    public class EnemyProjectileBadly: InteractiveObject {
         // for best results, this should be a prefab that interacts with the physics system unnecessarily
         public GameObject projectilePrefab;
 
