@@ -1944,11 +1944,28 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1928554860}
     m_Modifications:
-    - target: {fileID: 100002, guid: c53e2ff4f6c79fa4c9721a1cbacf11ba, type: 3}
+    - target: {fileID: 155972615734780611, guid: c70f74292f1690c4892d0631fdf40234,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 155972615734780613, guid: c70f74292f1690c4892d0631fdf40234,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 155972616873562389, guid: c70f74292f1690c4892d0631fdf40234,
+        type: 3}
       propertyPath: m_Name
       value: MARMO LOD1 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 400002, guid: c53e2ff4f6c79fa4c9721a1cbacf11ba, type: 3}
+    - target: {fileID: 155972616873562390, guid: c70f74292f1690c4892d0631fdf40234,
+        type: 3}
+      propertyPath: jumpSpeed
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 155972616873562472, guid: c70f74292f1690c4892d0631fdf40234,
+        type: 3}
       propertyPath: m_LocalPosition.x
       value: -173.77997
       objectReference: {fileID: 0}
