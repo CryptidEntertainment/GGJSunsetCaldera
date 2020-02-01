@@ -1,10 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 namespace Scott
 {
     public class Raycaster : MonoBehaviour
     {
+        public static Ray ray;
+
         public static RaycastResult getRayCastHit()
         {
             PointerEventData ped;
@@ -33,5 +36,16 @@ namespace Scott
             return closest;
 
         }
+
+        public static Vector3 GetCursorPosition()
+        {
+            Vector3 defaultCenter = new Vector3(Screen.width / 2, Screen.height / 2, 1);
+            return defaultCenter;
+        }
+
     }
+
+
+
+
 }
