@@ -18,5 +18,8 @@ namespace Peng {
                 Destroy(gameObject);
             }
         }
+
+        void OnTriggerEnter(Collider c) {
+        }
     }
 }

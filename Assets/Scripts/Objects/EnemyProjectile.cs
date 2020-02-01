@@ -5,6 +5,8 @@ using Scott;
 
 namespace Peng {
     public class EnemyProjectile: InteractiveObject {
+        public float throwStrength = 1f;
+        public float throwError = 1f;
         // for best results, this should be a prefab that interacts with the physics system unnecessarily
         public GameObject projectilePrefab;
 
@@ -19,8 +21,10 @@ namespace Peng {
                 ScheduleNextAction();
 
                 if (projectilePrefab) {
+                    Vector3 offset = new Vector3(Random.Range(-throwError, throwError), Random.Range(-throwError, throwError), Random.Range(-throwError, throwError));
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Projectile>();
-                    projectile.direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
+                    projectile.direction = Player.Me.transform.position - transform.position + Player.Me.transform.localScale.y * Vector3.up + offset;
+                    projectile.speed = throwStrength;
                 }
             }
         }
