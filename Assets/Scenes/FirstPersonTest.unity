@@ -341,6 +341,7 @@ MonoBehaviour:
   movementSpeed: 5
   rotationSpeed: 2
   pitchSpeed: 2
+  jumpSpeed: 200
 --- !u!1 &576462582
 GameObject:
   m_ObjectHideFlags: 0

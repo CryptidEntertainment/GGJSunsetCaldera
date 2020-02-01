@@ -7,6 +7,7 @@ namespace Peng {
         public float movementSpeed = 5f;
         public float rotationSpeed = 1f;
         public float pitchSpeed = 1f;
+        public float jumpSpeed = 2f;
 
         void Start() {
 
@@ -21,7 +22,7 @@ namespace Peng {
             float vertical = Input.GetAxis("Vertical");
             float mouseHorizontal = Input.GetAxis("Mouse X");
             float mouseVertical = Input.GetAxis("Mouse Y");
-            bool jump = (Input.GetButtonDown("Jump"));
+            bool jump = Input.GetButtonDown("Jump");
 
             horizontal = ((horizontal > 0) ? 1 : ((horizontal < 0) ? -1 : 0));
             vertical = ((vertical > 0) ? 1 : ((vertical < 0) ? -1 : 0));
@@ -38,6 +39,11 @@ namespace Peng {
                 Vector3 position = transform.position;
                 position = position + Quaternion.Euler(0f, movementAngle, 0f) * Vector3.right * movementSpeed * Time.deltaTime;
                 transform.position = position;
+            }
+
+            if (jump) {
+                Rigidbody rb = GetComponent<Rigidbody>();
+                rb.AddForce(Vector3.up * jumpSpeed);
             }
 
             // Look up and down
