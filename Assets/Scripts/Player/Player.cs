@@ -25,6 +25,8 @@ namespace Peng {
 
         private bool lockCursor = true;
         private bool mlMode = true;
+        private int maxJumpCount = 2;
+        private int jumpsRemaining;
 
         private Camera mainCamera;
         private Quaternion rotation;
@@ -32,6 +34,7 @@ namespace Peng {
         void Start() {
             mainCamera = GetComponentInChildren<Camera>();
             rotation = transform.rotation;
+            jumpsRemaining = maxJumpCount;
         }
 
         void FixedUpdate() {
@@ -55,7 +58,7 @@ namespace Peng {
                 UpdateCursorLock();
             }
 
-            if (jump && (JumpAvailable() || JUMP_INFINITE)) {
+            if (jump && (JumpAvailable() || JUMP_INFINITE || jumpsRemaining > 0)) {
                 Jump();
             }
         }
@@ -74,12 +77,17 @@ namespace Peng {
         public void Jump() {
             Rigidbody rb = GetComponent<Rigidbody>();
             rb.AddForce(Vector3.up * jumpSpeed);
+            jumpsRemaining--;
         }
 
         public bool JumpAvailable() {
             CapsuleCollider collider = GetComponent<CapsuleCollider>();
             Vector3 halfHeight = Vector3.up * (collider.height - collider.radius);
-            return Physics.CapsuleCast(transform.position - halfHeight, transform.position - halfHeight, collider.radius * 0.5f, Vector3.down, 1, ((int)CollisionMasks.TERRAIN));
+            bool floored = Physics.CapsuleCast(transform.position - halfHeight, transform.position - halfHeight, collider.radius * 0.5f, Vector3.down, 1, ((int)CollisionMasks.TERRAIN));
+            if (floored) {
+                jumpsRemaining = maxJumpCount;
+            }
+            return floored;
         }
 
         #region Scott's camera code
