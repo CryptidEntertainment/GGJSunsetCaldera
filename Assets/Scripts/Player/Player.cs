@@ -8,10 +8,6 @@ namespace Peng {
         public float rotationSpeed = 1f;
         public float pitchSpeed = 1f;
 
-        private bool jumpDeadZone = 0.25f;
-        private bool lookDeadZone = 0f;
-        private bool moveDeadZone = 0.25f;
-
         void Start() {
 
         }
@@ -25,12 +21,10 @@ namespace Peng {
             float vertical = Input.GetAxis("Vertical");
             float mouseHorizontal = Input.GetAxis("Mouse X");
             float mouseVertical = Input.GetAxis("Mouse Y");
-            bool jump = (Input.GetAxis("Jump") > jumpDeadZone);
+            bool jump = (Input.GetButtonDown("Jump"));
 
-            horizontal = ((horizontal > moveDeadZone) ? 1 : ((horizontal < moveDeadZone) ? -1 : 0));
-            vertical = ((vertical > moveDeadZone) ? 1 : ((vertical < moveDeadZone) ? -1 : 0));
-            mouseHorizontal = ((mouseHorizontal > lookDeadZone) ? 1 : ((mouseHorizontal < lookDeadZone) ? -1 : 0));
-            mouseVertical = ((vertical > lookDeadZone) ? 1 : ((mouseVertical < lookDeadZone) ? -1 : 0));
+            horizontal = ((horizontal > 0) ? 1 : ((horizontal < 0) ? -1 : 0));
+            vertical = ((vertical > 0) ? 1 : ((vertical < 0) ? -1 : 0));
 
             // Look side to side
             Quaternion rotation = transform.rotation;
