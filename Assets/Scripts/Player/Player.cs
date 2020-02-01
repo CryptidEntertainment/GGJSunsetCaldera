@@ -83,7 +83,8 @@ namespace Peng {
         public bool JumpAvailable() {
             CapsuleCollider collider = GetComponent<CapsuleCollider>();
             Vector3 halfHeight = Vector3.up * (collider.height - collider.radius);
-            bool floored = Physics.CapsuleCast(transform.position - halfHeight, transform.position - halfHeight, collider.radius * 0.5f, Vector3.down, 1, ((int)CollisionMasks.TERRAIN));
+            float checkDistance = 2.5f;
+            bool floored = Physics.CapsuleCast(transform.position - halfHeight, transform.position - halfHeight, collider.radius * 0.5f, Vector3.down, checkDistance, ((int)CollisionMasks.TERRAIN));
             if (floored) {
                 jumpsRemaining = maxJumpCount;
             }
