@@ -10,12 +10,15 @@ namespace Scott
         RaycastResult rayHit;
         private GameObject grabTarget;
         private bool fireDown;
+        public float gravDistance;
+        public GameObject cam;
         public GameObject gravPoint;
         public float maxSnapDistance;
 
         void Update()
         {
-            if(Input.GetAxis("Fire1")<1&&fireDown)
+            gravPoint.transform.position = cam.transform.position + cam.transform.forward * gravDistance;
+            if (Input.GetAxis("Fire1")<1&&fireDown)
             {
                 fireDown = false;
             }
