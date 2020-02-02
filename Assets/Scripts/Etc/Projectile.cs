@@ -16,8 +16,8 @@ namespace Peng {
             }
         }
 
-        public void Shoot(Vector3 direction, float speed) {
-            GetComponent<Rigidbody>().velocity = direction * speed * Time.deltaTime;
+        public void Shoot(Vector3 direction) {
+            GetComponent<Rigidbody>().velocity = direction * Time.deltaTime;
         }
 
         void OnTriggerEnter(Collider c) {
