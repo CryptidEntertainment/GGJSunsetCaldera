@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Scott
 {
-    public class InteractiveObject : MonoBehaviour
+    public class InteractiveObject : MonoBehaviour, IMortal
     {
         protected bool interacting;
         public float weight;
@@ -16,7 +16,13 @@ namespace Scott
         private Vector3 throwVelocity;
         private Vector3 lastValid;
         GravityGun callback;
+        private Vector3 originPosition;
+        private Quaternion originRotation;
         
+        void Awake() {
+            originPosition = transform.position;
+            originRotation = transform.rotation;
+        }
 
         public void pickup(GameObject obj,GravityGun cb)
         {
@@ -70,5 +76,18 @@ namespace Scott
             }
         }
 
+        /// <summary>
+        /// Methods required by IMortal
+        /// </summary>
+
+        public virtual void Die() {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb) {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+            transform.position = originPosition;
+            transform.rotation = originRotation;
+        }
     }
 }

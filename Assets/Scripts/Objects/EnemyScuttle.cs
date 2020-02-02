@@ -9,7 +9,7 @@ namespace Peng {
 
         private float nextAction;
         private Vector3 targetLocation;
-
+        
         void Start() {
             ScheduleNextAction();
         }
@@ -29,6 +29,16 @@ namespace Peng {
             targetLocation = transform.position + Quaternion.Euler(0f, moveAngle, 0f) * Vector3.forward * moveDistance;
             // magic, do not touch
             nextAction = Time.time + Random.Range(1.5f, 3.5f);
+        }
+
+        /// <summary>
+        /// Methods required by IMortal
+        /// </summary>
+
+        public override void Die() {
+            base.Die();
+            targetLocation = transform.position;
+            nextAction = Time.time + 1;
         }
     }
 }
