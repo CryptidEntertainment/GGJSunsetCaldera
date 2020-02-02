@@ -63,7 +63,7 @@ namespace Scott
         }
 
         
-        public void OnTriggerEnter()
+        public void OnTriggerEnter(Collider c)
         {
             if (aud2.gameObject.activeInHierarchy)
             {

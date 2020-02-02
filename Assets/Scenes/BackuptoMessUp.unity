@@ -2319,10 +2319,6 @@ Transform:
   - {fileID: 1437731627}
   - {fileID: 193763203}
   - {fileID: 490158341}
-  - {fileID: 507412831}
-  - {fileID: 889577131}
-  - {fileID: 1862483263}
-  - {fileID: 1386425801}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2614,7 +2610,7 @@ PrefabInstance:
     - target: {fileID: 8835585688994511704, guid: 10420018bea250a46b9d60762461583a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8835585688994511704, guid: 10420018bea250a46b9d60762461583a,
         type: 3}
@@ -3418,8 +3414,8 @@ GameObject:
   - component: {fileID: 193763206}
   - component: {fileID: 193763205}
   - component: {fileID: 193763204}
-  m_Layer: 0
-  m_Name: Music Box
+  m_Layer: 14
+  m_Name: 'Music Box: Home Base'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7701,6 +7697,7 @@ Transform:
   - {fileID: 574708328}
   - {fileID: 253238922}
   - {fileID: 1348042024}
+  - {fileID: 1862483263}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8877,8 +8874,8 @@ GameObject:
   - component: {fileID: 507412834}
   - component: {fileID: 507412833}
   - component: {fileID: 507412832}
-  m_Layer: 0
-  m_Name: Music Box (1)
+  m_Layer: 14
+  m_Name: 'Music Box: Mushroom'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8895,8 +8892,8 @@ Transform:
   m_LocalPosition: {x: 634, y: 550.93115, z: 1108}
   m_LocalScale: {x: 322.78986, y: 400, z: 213.58826}
   m_Children: []
-  m_Father: {fileID: 156074604}
-  m_RootOrder: 18
+  m_Father: {fileID: 1641605668}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &507412832
 MonoBehaviour:
@@ -9456,7 +9453,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 06db611ab3104ae47a6b43588d2c87b6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 06db611ab3104ae47a6b43588d2c87b6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -14337,8 +14334,8 @@ GameObject:
   - component: {fileID: 889577134}
   - component: {fileID: 889577133}
   - component: {fileID: 889577132}
-  m_Layer: 0
-  m_Name: Music Box (2)
+  m_Layer: 14
+  m_Name: 'Music Box: Mushroom'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14355,8 +14352,8 @@ Transform:
   m_LocalPosition: {x: 637, y: 550.93115, z: 1345}
   m_LocalScale: {x: 322.78986, y: 400, z: 213.58826}
   m_Children: []
-  m_Father: {fileID: 156074604}
-  m_RootOrder: 19
+  m_Father: {fileID: 1641605668}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &889577132
 MonoBehaviour:
@@ -20309,7 +20306,7 @@ PrefabInstance:
     - target: {fileID: 4740992585206274661, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4740992585206274661, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
@@ -21637,8 +21634,8 @@ GameObject:
   - component: {fileID: 1386425804}
   - component: {fileID: 1386425803}
   - component: {fileID: 1386425802}
-  m_Layer: 0
-  m_Name: Music Box (4)
+  m_Layer: 14
+  m_Name: 'Music Box: Water'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21655,8 +21652,8 @@ Transform:
   m_LocalPosition: {x: 404, y: 550.93115, z: 844}
   m_LocalScale: {x: 602.1334, y: 400, z: 287.1}
   m_Children: []
-  m_Father: {fileID: 156074604}
-  m_RootOrder: 21
+  m_Father: {fileID: 1495040938}
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1386425802
 MonoBehaviour:
@@ -23031,6 +23028,7 @@ Transform:
   - {fileID: 260732915}
   - {fileID: 1104621128}
   - {fileID: 648400236}
+  - {fileID: 1386425801}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25022,6 +25020,8 @@ Transform:
   - {fileID: 38717484}
   - {fileID: 1249500691}
   - {fileID: 81264582}
+  - {fileID: 507412831}
+  - {fileID: 889577131}
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -28947,8 +28947,8 @@ GameObject:
   - component: {fileID: 1862483266}
   - component: {fileID: 1862483265}
   - component: {fileID: 1862483264}
-  m_Layer: 0
-  m_Name: Music Box (3)
+  m_Layer: 14
+  m_Name: 'Music Box: Ruins'
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28962,10 +28962,10 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1862483262}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 287, y: 550.93115, z: 1345}
+  m_LocalPosition: {x: -364.3636, y: 68.67345, z: 1193.155}
   m_LocalScale: {x: 359.03915, y: 400, z: 317.28534}
   m_Children: []
-  m_Father: {fileID: 156074604}
+  m_Father: {fileID: 422008074}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1862483264
@@ -29929,7 +29929,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d981ed602fd31014d87aa630217a1eb6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: d981ed602fd31014d87aa630217a1eb6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -31405,7 +31405,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ae4680a6a390ef4396ab78dfe6e8d9c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 8ae4680a6a390ef4396ab78dfe6e8d9c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
