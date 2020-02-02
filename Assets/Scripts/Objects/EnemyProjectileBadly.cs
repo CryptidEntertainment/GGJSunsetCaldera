@@ -21,8 +21,7 @@ namespace Peng {
 
                 if (projectilePrefab) {
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Projectile>();
-                    projectile.direction = new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f));
-                    projectile.speed = throwSpeed;
+                    projectile.Shoot(new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), Random.Range(-1f, 1f)), throwSpeed);
                 }
             }
         }

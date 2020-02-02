@@ -23,8 +23,8 @@ namespace Peng {
                 if (projectilePrefab) {
                     Vector3 offset = new Vector3(Random.Range(-throwError, throwError), Random.Range(-throwError, throwError), Random.Range(-throwError, throwError));
                     Projectile projectile = Instantiate(projectilePrefab, transform.position, Quaternion.identity).GetComponent<Projectile>();
-                    projectile.direction = Player.Me.transform.position - transform.position + Player.Me.transform.localScale.y * Vector3.up + offset;
-                    projectile.speed = throwStrength;
+                    projectile.Shoot(Player.Me.transform.position - transform.position + Player.Me.transform.localScale.y * Vector3.up + offset, throwStrength);
+                    Debug.Log(Player.Me.transform.position - transform.position + Player.Me.transform.localScale.y * Vector3.up);
                 }
             }
         }
