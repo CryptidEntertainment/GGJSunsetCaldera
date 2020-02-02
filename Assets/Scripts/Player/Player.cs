@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Peng {
-    enum CollisionMasks {
+    public enum CollisionMasks {
         DEFAULT                 = 0x0001,
         TRANSPARENT_FX          = 0x0002,
         IGNORE_RAYCAST          = 0x0004,
@@ -17,6 +17,10 @@ namespace Peng {
         PLAYER                  = 0x0400,
         GUN                     = 0x0800,
         DEATH                   = 0x1000,
+    }
+
+    public enum GameStates {
+        TITLE, PLAY
     }
 
     public class Player : MonoBehaviour, IMortal {
@@ -37,6 +41,10 @@ namespace Peng {
         public int Health {
             get; private set;
         }
+
+        public GameStates Mode {
+            get; private set;
+        } = GameStates.TITLE;
 
         private bool lockCursor = true;
         private bool mlMode = true;
@@ -70,11 +78,35 @@ namespace Peng {
         }
 
         void FixedUpdate() {
+            switch (Mode) {
+                case GameStates.TITLE:
+                    break;
+                case GameStates.PLAY:
+                    FixedUpdateGameplay();
+                    break;
+            }
+        }
+
+        void Update() {
+            switch (Mode) {
+                case GameStates.TITLE:
+                    break;
+                case GameStates.PLAY:
+                    UpdateGameplay();
+                    break;
+            }
+        }
+
+        public void EnterPlayMode() {
+            Mode = GameStates.PLAY;
+        }
+
+        private void FixedUpdateGameplay() {
             // Gather input
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");
             float run = Input.GetAxis("Run");
-            
+
             horizontal = ((horizontal > 0) ? 1 : ((horizontal < 0) ? -1 : 0));
             vertical = ((vertical > 0) ? 1 : ((vertical < 0) ? -1 : 0));
             run = (run > 0) ? runModifier : 1f;
@@ -82,7 +114,7 @@ namespace Peng {
             PlayerMovement(horizontal, vertical, run);
         }
 
-        void Update() {
+        private void UpdateGameplay() {
             float mouseHorizontal = Input.GetAxis("Mouse X");
             float mouseVertical = Input.GetAxis("Mouse Y");
             bool jump = Input.GetButtonDown("Jump");
@@ -99,7 +131,6 @@ namespace Peng {
             IFrames = Mathf.Max(0f, IFrames - Time.deltaTime);
 
             transform.position = GetComponentInChildren<Rigidbody>().transform.position;
-
         }
 
         private void PlayerMovement(float horizontal, float vertical, float speedModifier) {
