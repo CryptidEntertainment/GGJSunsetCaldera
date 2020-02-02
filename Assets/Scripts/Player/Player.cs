@@ -38,6 +38,8 @@ namespace Peng {
         public float runModifier = 2f;
         public int maxHealth = 3;
 
+        public GameObject winScreen;
+
         public int Health {
             get; private set;
         }
@@ -95,6 +97,12 @@ namespace Peng {
                     UpdateGameplay();
                     break;
             }
+        }
+
+        public void EnterWinScreen() {
+            Mode = GameStates.TITLE;
+            SetCursorLock(false);
+            winScreen.GetComponent<WinScreen>().Activate();
         }
 
         public void EnterPlayMode() {
