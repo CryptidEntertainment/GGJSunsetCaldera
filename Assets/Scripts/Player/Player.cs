@@ -99,6 +99,7 @@ namespace Peng {
 
         public void EnterPlayMode() {
             Mode = GameStates.PLAY;
+            SetCursorLock(true);
         }
 
         private void FixedUpdateGameplay() {
