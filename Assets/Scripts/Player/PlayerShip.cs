@@ -18,18 +18,22 @@ namespace Peng {
 
         public void ActivateSteering() {
             steering.SetActive(true);
+            CheckWinCondition();
         }
 
         public void ActivateFuel() {
             fuel.SetActive(true);
+            CheckWinCondition();
         }
 
         public void ActivateNavigation() {
             navigation.SetActive(true);
+            CheckWinCondition();
         }
 
         public void ActivatePod() {
             pod.SetActive(true);
+            CheckWinCondition();
         }
 
         public void DeactivateSteering() {
@@ -46,6 +50,12 @@ namespace Peng {
 
         public void DeactivatePod() {
             pod.SetActive(false);
+        }
+
+        private void CheckWinCondition() {
+            if (steering.activeInHierarchy && fuel.activeInHierarchy && navigation.activeInHierarchy && pod.activeInHierarchy) {
+                Player.Me.GetComponent<Player>().EnterWinScreen();
+            }
         }
     }
 }

@@ -63,7 +63,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 1
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -100,6 +100,7 @@ MonoBehaviour:
   cam: {fileID: 4740992585288038228}
   gravPoint: {fileID: 0}
   maxSnapDistance: 3
+  firePart: {fileID: 0}
 --- !u!1 &4740992585288038228
 GameObject:
   m_ObjectHideFlags: 0

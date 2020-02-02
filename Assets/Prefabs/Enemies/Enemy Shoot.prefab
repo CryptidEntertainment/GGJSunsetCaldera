@@ -272,14 +272,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 10
-  throwStrength: 1600
-  throwError: 1
+  throwStrength: 2400
+  throwError: 0.25
   projectilePrefab: {fileID: 5445162018410629080, guid: 0ac411a6612240d4aa9801acd37a585c,
     type: 3}
   leftHand: {fileID: 472045316}
   rightHand: {fileID: 121878713}
-  moveSpeed: 1
-  hoverRange: 1
+  moveSpeed: 4
+  hoverRange: 16
   hoverAmplitude: 1
   hoverPeriod: 1
 --- !u!136 &8231537895134154144
