@@ -22,6 +22,7 @@ namespace Scott
             {
                 if (audSwitcher == 1)
                 {
+                    Debug.Log("vol1: " + vol1);
                     if (vol1 < 1)
                     {
                         vol1 = (Time.time - musicTriggerTime) / crossfadeTime;
@@ -41,12 +42,13 @@ namespace Scott
                 }
                 else if (audSwitcher == 2)
                 {
+                    Debug.Log("vol2: " + vol2);
                     if (vol2 < 1)
                     {
                         vol2 = (Time.time - musicTriggerTime) / crossfadeTime;
-                        aud2.volume = vol1;
+                        aud2.volume = vol2;
                         vol1 = 1 - ((Time.time - musicTriggerTime) / crossfadeTime);
-                        aud1.volume = vol2;
+                        aud1.volume = vol1;
                     }
                     else if (vol2 >= 1)
                     {
@@ -61,31 +63,44 @@ namespace Scott
             }
         }
 
-
-        // Update is called once per frame
-        void OnTriggerEnter()
+        
+        public void OnTriggerEnter()
         {
             if (aud2.gameObject.activeInHierarchy)
             {
-                fading = true;
-                audSwitcher = 1;
-                musicTriggerTime = Time.time;
-                //aud1.gameObject.SetActive(false);
-                aud1.gameObject.SetActive(true);
-                aud1.clip = setClip;
-                aud1.volume = 0f;
-                aud1.Play();
+                if (aud2.clip == setClip)
+                    return;
+                else
+                {
+                    fading = true;
+                    audSwitcher = 1;
+                    musicTriggerTime = Time.time;
+                    aud1.gameObject.SetActive(true);
+                    aud1.clip = setClip;
+                    aud1.volume = 0f;
+                    aud2.volume = 0f;
+                    vol1 = 0f;
+                    vol2 = 0f;
+                    aud1.Play();
+                }
             }
             else if (aud1.gameObject.activeInHierarchy)
             {
-                fading = true;
-                audSwitcher = 2;
-                musicTriggerTime = Time.time;
-                //aud2.gameObject.SetActive(false);
-                aud2.gameObject.SetActive(true);
-                aud2.clip = setClip;
-                aud2.volume = 0f;
-                aud2.Play();
+                if (aud1.clip == setClip)
+                    return;
+                else
+                {
+                    fading = true;
+                    audSwitcher = 2;
+                    musicTriggerTime = Time.time;
+                    aud2.gameObject.SetActive(true);
+                    aud2.clip = setClip;
+                    aud2.volume = 0f;
+                    aud1.volume = 0f;
+                    vol1 = 0f;
+                    vol2 = 0f;
+                    aud2.Play();
+                }
             }
         }
     }
