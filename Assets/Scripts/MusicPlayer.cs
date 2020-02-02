@@ -13,6 +13,7 @@ namespace Scott
         private float vol1;
         private float vol2;
         public float crossfadeTime=3;
+
         private float musicTriggerTime;
         private bool fading;
 
