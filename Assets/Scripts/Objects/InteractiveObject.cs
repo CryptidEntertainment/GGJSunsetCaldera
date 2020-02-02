@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Scott
 {
-    public class InteractiveObject : MonoBehaviour
+    public class InteractiveObject : MonoBehaviour, IMortal
     {
         protected bool interacting;
         public float weight=10;
         protected GameObject moveTarget;
         private Vector3 prevPos;
+
+        public bool Flung {
+            get; set;
+        } = false;
 
         private Vector3 currentPos;
         private float lerpRate;
@@ -16,7 +20,13 @@ namespace Scott
         private Vector3 throwVelocity;
         private Vector3 lastValid;
         GravityGun callback;
+        private Vector3 originPosition;
+        private Quaternion originRotation;
         
+        void Awake() {
+            originPosition = transform.position;
+            originRotation = transform.rotation;
+        }
 
         public void pickup(GameObject obj,GravityGun cb)
         {
@@ -30,6 +40,7 @@ namespace Scott
             }
             moveTarget = obj;
             callback = cb;
+            Disable();
         }
 
         public void drop()
@@ -70,5 +81,27 @@ namespace Scott
             }
         }
 
+        protected virtual void Disable() {
+
+        }
+
+        protected float DistanceToPlayer() {
+            return Vector3.Distance(Peng.Player.Me.transform.position, transform.position);
+        }
+
+        /// <summary>
+        /// Methods required by IMortal
+        /// </summary>
+
+        public virtual void Die() {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb) {
+                rb.velocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+                rb.useGravity = false;
+            }
+            transform.position = originPosition;
+            transform.rotation = originRotation;
+        }
     }
 }

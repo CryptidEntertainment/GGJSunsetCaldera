@@ -25,14 +25,11 @@ namespace Scott
             }
             if (Input.GetAxis("Fire1")>0&&!pickupActive&&!fireDown)
             {
-                Debug.Log("Fired");
                 fireDown=true;
                 Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                Debug.Log(ray);
                 if (Physics.Raycast(ray, out hit, grabbingDistance))
                 {
-                    Debug.Log("Hit");
                     if (hit.collider.gameObject.GetComponent<InteractiveObject>() != null)
                     {
                         pickupActive = true;
@@ -40,7 +37,6 @@ namespace Scott
                         grabTarget.GetComponent<InteractiveObject>().pickup(gravPoint, this);
                     }
                 }
-                
             }
             else if (Input.GetAxis("Fire1")>0&&pickupActive&&!fireDown)
             {

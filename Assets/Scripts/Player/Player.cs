@@ -14,13 +14,16 @@ namespace Peng {
         SEVEN                   = 0x0080,
         TERRAIN                 = 0x0100,
         PROJECTILE              = 0x0200,
+        PLAYER                  = 0x0400,
+        GUN                     = 0x0800,
+        DEATH                   = 0x1000,
     }
 
-    public class Player : MonoBehaviour {
+    public class Player : MonoBehaviour, IMortal {
         // I'm allowed just one singleton, okay?
         public static Player Me {
             get; private set;
-        }
+        } = null;
 
         const bool JUMP_INFINITE = false;
 
@@ -113,7 +116,6 @@ namespace Peng {
             Vector3 halfHeight = Vector3.up * (collider.height - collider.radius);
             float checkDistance = 3f;
             float checkRadius = 0.8f;
-            RaycastHit hit;
             bool floored = Physics.CapsuleCast(transform.position - halfHeight, transform.position - halfHeight, collider.radius * checkRadius, Vector3.down, checkDistance, ((int)CollisionMasks.TERRAIN));
             if (floored) {
                 jumpsRemaining = maxJumpCount;
@@ -172,6 +174,9 @@ namespace Peng {
             Debug.Log("Ow!");
         }
 
+        /// <summary>
+        /// Methods required by IMortal
+        /// </summary>
         public void Die() {
             Debug.Log("YOU TRIED");
         }

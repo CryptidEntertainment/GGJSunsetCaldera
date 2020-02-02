@@ -18,12 +18,16 @@ namespace Peng {
         public float rotationSpeed = 720f;
         public Transform startingPosition;
 
+        public float hoverAmplitude = 1f;
+        public float hoverPeriod = 1f;
+        private float time = 0;
+
         private int waypointIndex = 0;
         private float waypointCooldown = 0;
         private RoombaStates state = RoombaStates.IDLE;
 
         private enum RoombaStates {
-            IDLE, CHASE, RETREAT
+            IDLE, CHASE, RETREAT, DISABLED
         }
 
         void Awake() {
@@ -40,20 +44,27 @@ namespace Peng {
                 case RoombaStates.IDLE:
                     SeekWaypoint();
                     DetectPlayer();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr();
+                    Hover();
                     break;
                 case RoombaStates.CHASE:
                     ChasePlayer();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr();
+                    Hover();
                     break;
                 case RoombaStates.RETREAT:
                     RetreatToWaypoint();
                     SeekWaypoint();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr();
+                    Hover();
+                    break;
+                case RoombaStates.DISABLED:
                     break;
             }
-
-            transform.rotation *= Quaternion.Euler(0f, rotationSpeed * Time.deltaTime, 0f);
         }
 
         void OnCollisionStay(Collision c) {
+            
             Player player = c.gameObject.GetComponent<Player>();
             if (player) {
                 player.Damage();
@@ -61,8 +72,12 @@ namespace Peng {
             }
         }
 
-        private float DistanceToPlayer() {
-            return Vector3.Distance(Player.Me.transform.position, transform.position);
+        private void Hover() {
+            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod);
+        }
+
+        protected override void Disable() {
+            state = RoombaStates.DISABLED;
         }
 
         private void DetectPlayer() {
@@ -70,6 +85,10 @@ namespace Peng {
                 state = RoombaStates.CHASE;
                 return;
             }
+        }
+
+        private void Whirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr() {
+            transform.rotation *= Quaternion.Euler(0f, rotationSpeed * Time.deltaTime, 0f);
         }
 
         private void ChasePlayer() {

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1548959445288706014}
   - component: {fileID: 1548959445288705954}
   - component: {fileID: 1945362972}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Enemy Roomba
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1548959445288706015}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 6839082202077c0478a109c6b51560ab, type: 3}
 --- !u!23 &1548959445288706013
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 302101278a2bc9c4e9c07c501ae92cd5, type: 2}
+  - {fileID: 2100000, guid: e4205a6327e47b948b8ac62700ff2c79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -115,12 +115,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  movementSpeed: 6
+  movementSpeed: 4
   waypointDelay: 0.25
   maxRadius: 96
   knockbackSpeed: 10
-  rotationSpeed: 720
+  rotationSpeed: 28800
   startingPosition: {fileID: 0}
+  hoverAmplitude: 1
+  hoverPeriod: 1
 --- !u!54 &1945362972
 Rigidbody:
   m_ObjectHideFlags: 0
