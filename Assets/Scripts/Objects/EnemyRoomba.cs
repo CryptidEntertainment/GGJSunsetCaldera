@@ -31,6 +31,10 @@ namespace Peng {
         }
 
         void Start() {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb) {
+                rb.useGravity = false;
+            }
             time = Random.Range(0f, 6.28f);
             waypointIndex = 0;
             waypointCooldown = 0;
