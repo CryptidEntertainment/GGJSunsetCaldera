@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 723060506942453501}
   - component: {fileID: 723060506942453500}
   - component: {fileID: 723060506942453489}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Enemy Frogy Of Evil
   m_TagString: Untagged
   m_Icon: {fileID: 0}

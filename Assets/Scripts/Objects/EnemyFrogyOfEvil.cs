@@ -18,6 +18,7 @@ namespace Peng {
         }
 
         void Awake() {
+            throw new System.Exception("This has not been implemented, please do not use");
         }
 
         void Update() {

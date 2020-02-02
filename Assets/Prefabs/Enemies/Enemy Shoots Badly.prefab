@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 5102489443919618031}
   - component: {fileID: 5102489443919618025}
   - component: {fileID: 5102489443919618024}
-  m_Layer: 0
-  m_Name: Enemy Shoots (Badly)
+  m_Layer: 13
+  m_Name: Enemy Shoots Badly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 0
+  throwSpeed: 1
   projectilePrefab: {fileID: 5445162018410629080, guid: 837629e0c7560aa4294f8584d42ee009,
     type: 3}
 --- !u!114 &5102489443919618024
