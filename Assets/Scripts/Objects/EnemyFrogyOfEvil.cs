@@ -42,10 +42,6 @@ namespace Peng {
             }
         }
 
-        private float DistanceToPlayer() {
-            return Vector3.Distance(Player.Me.transform.position, transform.position);
-        }
-
         private void SeekWaypoint() {
             if (waypoints.Count < 1) {
                 return;
