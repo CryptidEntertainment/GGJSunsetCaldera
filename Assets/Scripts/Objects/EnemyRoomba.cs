@@ -18,12 +18,16 @@ namespace Peng {
         public float rotationSpeed = 720f;
         public Transform startingPosition;
 
+        public float hoverAmplitude = 1f;
+        public float hoverPeriod = 1f;
+        private float time = 0;
+
         private int waypointIndex = 0;
         private float waypointCooldown = 0;
         private RoombaStates state = RoombaStates.IDLE;
 
         private enum RoombaStates {
-            IDLE, CHASE, RETREAT
+            IDLE, CHASE, RETREAT, DISABLED
         }
 
         void Awake() {
@@ -40,17 +44,20 @@ namespace Peng {
                 case RoombaStates.IDLE:
                     SeekWaypoint();
                     DetectPlayer();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrr();
                     break;
                 case RoombaStates.CHASE:
                     ChasePlayer();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrr();
                     break;
                 case RoombaStates.RETREAT:
                     RetreatToWaypoint();
                     SeekWaypoint();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrr();
+                    break;
+                case RoombaStates.DISABLED:
                     break;
             }
-
-            transform.rotation *= Quaternion.Euler(0f, rotationSpeed * Time.deltaTime, 0f);
         }
 
         void OnCollisionStay(Collision c) {
@@ -61,11 +68,19 @@ namespace Peng {
             }
         }
 
+        protected override void Disable() {
+            state = RoombaStates.DISABLED;
+        }
+
         private void DetectPlayer() {
             if (DistanceToPlayer() < PLAYER_DETECT_RADIUS) {
                 state = RoombaStates.CHASE;
                 return;
             }
+        }
+
+        private void Whirrrrrrrrrrrrrrrrrrrrrrrr() {
+            transform.rotation *= Quaternion.Euler(0f, rotationSpeed * Time.deltaTime, 0f);
         }
 
         private void ChasePlayer() {

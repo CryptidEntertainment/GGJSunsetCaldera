@@ -115,12 +115,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  movementSpeed: 6
+  movementSpeed: 4
   waypointDelay: 0.25
   maxRadius: 96
   knockbackSpeed: 10
-  rotationSpeed: 720
+  rotationSpeed: 28800
   startingPosition: {fileID: 0}
+  hoverAmplitude: 1
+  hoverPeriod: 1
 --- !u!54 &1945362972
 Rigidbody:
   m_ObjectHideFlags: 0
