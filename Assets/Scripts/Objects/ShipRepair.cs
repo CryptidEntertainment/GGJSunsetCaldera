@@ -8,11 +8,13 @@ namespace Scott
         Peng.Player player;
         Peng.PlayerShip playerShip;
         Scott.ShipPart shipPart;
+        Scott.GravityGun gravGun;
 
         void Start()
         {
             player = Peng.Player.Me;
             playerShip = player.GetComponent<Peng.PlayerShip>();
+            player.GetComponent<GravityGun>();
         }
 
         // Update is called once per frame
@@ -36,6 +38,7 @@ namespace Scott
                         Debug.Log("The thing isn't labeled right!");
                         break;
                 }
+                gravGun.grabbedDestroyed();
                 Destroy(coll.gameObject);
             }
         }
