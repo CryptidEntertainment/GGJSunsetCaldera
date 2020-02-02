@@ -354,7 +354,7 @@ GameObject:
   - component: {fileID: 23345400}
   - component: {fileID: 23345399}
   m_Layer: 12
-  m_Name: Infinite Death
+  m_Name: Infinite Death Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
