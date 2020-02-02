@@ -34,13 +34,16 @@ namespace Peng {
         public float runModifier = 2f;
         public int maxHealth = 3;
 
+        public int Health {
+            get; private set;
+        }
+
         private bool lockCursor = true;
         private bool mlMode = true;
         private int maxJumpCount = 2;
         private int jumpsRemaining;
         private float maxIFrames = 1.5f;
-        private int health;
-
+        
         private Camera mainCamera;
         private Vector3 originalPosition;
         private Quaternion originalRotation;
@@ -57,7 +60,7 @@ namespace Peng {
             }
 
             Me = this;
-            health = maxHealth;
+            Health = maxHealth;
 
             mainCamera = GetComponentInChildren<Camera>();
             rotation = transform.rotation;
@@ -177,9 +180,9 @@ namespace Peng {
                 IFrames = maxIFrames;
             }
 
-            health = Mathf.Min(health - amount, maxHealth);
+            Health = Mathf.Min(Health - amount, maxHealth);
             
-            if (health <= 0) {
+            if (Health <= 0) {
                 Die();
             }
         }
@@ -190,7 +193,7 @@ namespace Peng {
         public void Die() {
             transform.position = originalPosition;
             transform.rotation = originalRotation;
-            health = maxHealth;
+            Health = maxHealth;
         }
     }
 }
