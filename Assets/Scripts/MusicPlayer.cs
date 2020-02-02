@@ -12,7 +12,7 @@ namespace Scott
         public AudioClip setClip;
         private float vol1;
         private float vol2;
-        public float crossfadeTime;
+        public float crossfadeTime=3;
         private float musicTriggerTime;
         private bool fading;
 
@@ -22,7 +22,6 @@ namespace Scott
             {
                 if (audSwitcher == 1)
                 {
-                    Debug.Log("vol1: " + vol1);
                     if (vol1 < 1)
                     {
                         vol1 = (Time.time - musicTriggerTime) / crossfadeTime;
@@ -42,7 +41,6 @@ namespace Scott
                 }
                 else if (audSwitcher == 2)
                 {
-                    Debug.Log("vol2: " + vol2);
                     if (vol2 < 1)
                     {
                         vol2 = (Time.time - musicTriggerTime) / crossfadeTime;
