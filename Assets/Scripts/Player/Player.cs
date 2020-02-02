@@ -20,7 +20,7 @@ namespace Peng {
         // I'm allowed just one singleton, okay?
         public static Player Me {
             get; private set;
-        }
+        } = null;
 
         const bool JUMP_INFINITE = false;
 

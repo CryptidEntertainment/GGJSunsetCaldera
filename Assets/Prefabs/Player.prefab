@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 155972616873562391}
   - component: {fileID: 155972616873562473}
   - component: {fileID: 155972616873562390}
+  - component: {fileID: 1807241282}
+  - component: {fileID: 1807241283}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -81,6 +83,37 @@ MonoBehaviour:
   pitchSpeed: 2
   jumpSpeed: 640
   runModifier: 2
+  maxHealth: 3
+--- !u!114 &1807241282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155972616873562389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cb1df802d131f146a813798524e1c72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravPoint: {fileID: 0}
+  maxSnapDistance: 0
+--- !u!114 &1807241283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 155972616873562389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f467f1c2cc020104eb426051aa6fb085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  steering: {fileID: 0}
+  fuel: {fileID: 0}
+  navigation: {fileID: 0}
+  pod: {fileID: 0}
 --- !u!1 &155972617223699545
 GameObject:
   m_ObjectHideFlags: 0
@@ -107,7 +140,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 155972617223699545}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0.46}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 155972616873562472}
