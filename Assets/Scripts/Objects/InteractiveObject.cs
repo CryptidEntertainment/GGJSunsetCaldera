@@ -6,7 +6,7 @@ namespace Scott
     public class InteractiveObject : MonoBehaviour, IMortal
     {
         protected bool interacting;
-        public float weight=10;
+        public float weight = 10;
         protected GameObject moveTarget;
         private Vector3 prevPos;
 

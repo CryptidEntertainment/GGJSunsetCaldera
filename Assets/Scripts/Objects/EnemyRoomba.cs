@@ -38,6 +38,8 @@ namespace Peng {
     }
 
         void Update() {
+            time = time + Time.deltaTime;
+
             // if you're too far away from the origin, no matter what you're doing, stop being too far
             // away from the origin
             if (Vector3.Distance(transform.position, startingPosition.position) >= maxRadius) {
@@ -77,12 +79,12 @@ namespace Peng {
             }
         }
 
-        private void Hover() {
-            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod);
-        }
-
         protected override void Disable() {
             state = RoombaStates.DISABLED;
+        }
+
+        private void Hover() {
+            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod) * Time.deltaTime;
         }
 
         private void DetectPlayer() {

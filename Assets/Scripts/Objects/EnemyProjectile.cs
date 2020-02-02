@@ -39,7 +39,7 @@ namespace Peng {
                 transform.rotation = Quaternion.LookRotation(Player.Me.transform.position - transform.position);
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, targetLocation + Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod), moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
             time = time + Time.deltaTime;
 
             if (Time.time >= nextAction) {
@@ -62,6 +62,10 @@ namespace Peng {
             if (!active) {
                 Die();
             }
+        }
+
+        private void Hover() {
+            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod) * Time.deltaTime;
         }
 
         private void ScheduleNextAction() {
