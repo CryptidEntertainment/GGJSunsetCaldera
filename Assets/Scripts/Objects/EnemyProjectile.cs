@@ -26,6 +26,8 @@ namespace Peng {
         void Start() {
             ScheduleNextAction();
             time = Random.Range(0f, 6.28f);
+            targetLocation = transform.position;
+            active = true;
         }
 
         void Update() {
@@ -37,7 +39,7 @@ namespace Peng {
                 transform.rotation = Quaternion.LookRotation(Player.Me.transform.position - transform.position);
             }
 
-            transform.position = Vector3.MoveTowards(transform.position, targetLocation + Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod), moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, targetLocation, moveSpeed * Time.deltaTime);
             time = time + Time.deltaTime;
 
             if (Time.time >= nextAction) {
@@ -62,6 +64,10 @@ namespace Peng {
             }
         }
 
+        private void Hover() {
+            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod) * Time.deltaTime;
+        }
+
         private void ScheduleNextAction() {
             // magic, do not touch
             nextAction = Time.time + Random.Range(1.5f, 3.5f);
@@ -73,8 +79,7 @@ namespace Peng {
 
         public override void Die() {
             base.Die();
-            targetLocation = transform.position;
-            nextAction = Time.time + 1;
+            Start();
         }
     }
 }

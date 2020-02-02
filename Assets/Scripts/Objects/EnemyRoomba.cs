@@ -20,8 +20,8 @@ namespace Peng {
 
         public float hoverAmplitude = 1f;
         public float hoverPeriod = 1f;
-        private float time = 0;
 
+        private float time = 0;
         private int waypointIndex = 0;
         private float waypointCooldown = 0;
         private RoombaStates state = RoombaStates.IDLE;
@@ -30,10 +30,16 @@ namespace Peng {
             IDLE, CHASE, RETREAT, DISABLED
         }
 
-        void Awake() {
-        }
+        void Start() {
+            time = Random.Range(0f, 6.28f);
+            waypointIndex = 0;
+            waypointCooldown = 0;
+            state = RoombaStates.IDLE;
+    }
 
         void Update() {
+            time = time + Time.deltaTime;
+
             // if you're too far away from the origin, no matter what you're doing, stop being too far
             // away from the origin
             if (Vector3.Distance(transform.position, startingPosition.position) >= maxRadius) {
@@ -64,20 +70,21 @@ namespace Peng {
         }
 
         void OnCollisionStay(Collision c) {
-            
             Player player = c.gameObject.GetComponent<Player>();
             if (player) {
                 player.Damage();
                 player.GetComponent<Rigidbody>().velocity = knockbackSpeed * (player.transform.position - transform.position);
+            } else if (state == RoombaStates.DISABLED) {
+                Die();
             }
-        }
-
-        private void Hover() {
-            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod);
         }
 
         protected override void Disable() {
             state = RoombaStates.DISABLED;
+        }
+
+        private void Hover() {
+           // transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod) * Time.deltaTime;
         }
 
         private void DetectPlayer() {
@@ -127,6 +134,15 @@ namespace Peng {
                     waypointIndex = i;
                 }
             }
+        }
+
+        /// <summary>
+        /// Methods required by IMortal
+        /// </summary>
+
+        public override void Die() {
+            base.Die();
+            Start();
         }
     }
 }

@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8bc8dcfcf808df40af55beaa0d9cc10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 10
   throwSpeed: 1
   projectilePrefab: {fileID: 5445162018410629080, guid: 837629e0c7560aa4294f8584d42ee009,
     type: 3}
