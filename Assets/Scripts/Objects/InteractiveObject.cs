@@ -40,6 +40,7 @@ namespace Scott
             }
             moveTarget = obj;
             callback = cb;
+            Disable();
         }
 
         public void drop()
@@ -78,6 +79,14 @@ namespace Scott
                 }
                 fixedTime = Time.deltaTime;
             }
+        }
+
+        protected virtual void Disable() {
+
+        }
+
+        protected float DistanceToPlayer() {
+            return Vector3.Distance(Peng.Player.Me.transform.position, transform.position);
         }
 
         /// <summary>

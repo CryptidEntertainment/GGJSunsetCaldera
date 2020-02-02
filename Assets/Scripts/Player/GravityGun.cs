@@ -30,7 +30,6 @@ namespace Scott
                 RaycastHit hit;
                 if (Physics.Raycast(ray, out hit, grabbingDistance))
                 {
-                    Debug.Log("Hit");
                     if (hit.collider.gameObject.GetComponent<InteractiveObject>() != null)
                     {
                         pickupActive = true;
@@ -44,7 +43,6 @@ namespace Scott
                 fireDown = true;
                 pickupActive = false;
                 grabTarget.GetComponent<InteractiveObject>().drop();
-                Debug.Log("Fling");
             }
         }
 
