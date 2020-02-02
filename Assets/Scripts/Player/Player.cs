@@ -86,6 +86,9 @@ namespace Peng {
             }
 
             IFrames = Mathf.Max(0f, IFrames - Time.deltaTime);
+
+            transform.position = GetComponentInChildren<Rigidbody>().transform.position;
+
         }
 
         private void PlayerMovement(float horizontal, float vertical, float speedModifier) {
@@ -100,16 +103,17 @@ namespace Peng {
         }
 
         public void Jump() {
-            Rigidbody rb = GetComponent<Rigidbody>();
+            Rigidbody rb = GetComponentInChildren<Rigidbody>();
             rb.AddForce(Vector3.up * jumpSpeed);
             jumpsRemaining--;
         }
 
         public bool JumpAvailable() {
-            CapsuleCollider collider = GetComponent<CapsuleCollider>();
+            CapsuleCollider collider = GetComponentInChildren<CapsuleCollider>();
             Vector3 halfHeight = Vector3.up * (collider.height - collider.radius);
-            float checkDistance = 2.5f;
+            float checkDistance = 3f;
             float checkRadius = 0.8f;
+            RaycastHit hit;
             bool floored = Physics.CapsuleCast(transform.position - halfHeight, transform.position - halfHeight, collider.radius * checkRadius, Vector3.down, checkDistance, ((int)CollisionMasks.TERRAIN));
             if (floored) {
                 jumpsRemaining = maxJumpCount;
