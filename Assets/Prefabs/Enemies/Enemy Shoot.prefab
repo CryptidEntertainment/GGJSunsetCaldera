@@ -170,7 +170,6 @@ GameObject:
   - component: {fileID: 5102489443919618030}
   - component: {fileID: 5102489443919618029}
   - component: {fileID: 5102489443919618031}
-  - component: {fileID: 5102489443919618024}
   - component: {fileID: 720032516}
   - component: {fileID: 8231537895134154144}
   m_Layer: 13
@@ -257,25 +256,8 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 112
   m_CollisionDetection: 0
---- !u!114 &5102489443919618024
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5102489443919618034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fce2c13ef423e5045a2de196ba28eacf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  weight: 10
-  moveSpeed: 10
-  hoverRange: 16
-  hoverAmplitude: 0.5
-  hoverPeriod: 0.5
 --- !u!114 &720032516
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -295,6 +277,10 @@ MonoBehaviour:
     type: 3}
   leftHand: {fileID: 472045316}
   rightHand: {fileID: 121878713}
+  moveSpeed: 1
+  hoverRange: 1
+  hoverAmplitude: 1
+  hoverPeriod: 1
 --- !u!136 &8231537895134154144
 CapsuleCollider:
   m_ObjectHideFlags: 0
