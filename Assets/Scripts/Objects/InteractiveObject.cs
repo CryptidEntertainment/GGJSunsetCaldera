@@ -10,6 +10,10 @@ namespace Scott
         protected GameObject moveTarget;
         private Vector3 prevPos;
 
+        public bool Flung {
+            get; set;
+        } = false;
+
         private Vector3 currentPos;
         private float lerpRate;
         private float fixedTime;
