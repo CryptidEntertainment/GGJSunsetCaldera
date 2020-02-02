@@ -98,7 +98,6 @@ namespace Scott
             if (rb) {
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
-                rb.useGravity = false;
             }
             transform.position = originPosition;
             transform.rotation = originRotation;
