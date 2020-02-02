@@ -13,6 +13,13 @@ namespace Peng {
 
             if (lifespan <= 0) {
                 Destroy(gameObject);
+                return;
+            }
+
+            // magic, do not touch
+            if (Vector3.Magnitude(GetComponent<Rigidbody>().velocity) < 1f) {
+                Destroy(gameObject);
+                return;
             }
         }
 
