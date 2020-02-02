@@ -84,7 +84,7 @@ namespace Peng {
         }
 
         private void Hover() {
-            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod) * Time.deltaTime;
+           // transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod) * Time.deltaTime;
         }
 
         private void DetectPlayer() {
