@@ -67,8 +67,6 @@ namespace Scott
                     }
                 }
                 fixedTime = Time.deltaTime;
-                Debug.Log("Pos: " + transform.position);
-                Debug.Log("Target: " + moveTarget.transform.position);
             }
         }
 
