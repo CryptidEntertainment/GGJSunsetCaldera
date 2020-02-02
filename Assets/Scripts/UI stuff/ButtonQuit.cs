@@ -17,6 +17,6 @@ public class ButtonQuit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
     }
 
     public void Quit() {
-
+        Application.Quit();
     }
 }
