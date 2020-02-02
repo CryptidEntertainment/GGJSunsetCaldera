@@ -15,6 +15,7 @@ namespace Scott
         public GameObject cam;
         public GameObject gravPoint;
         public float maxSnapDistance;
+        public GameObject firePart;
 
         void Update()
         {
@@ -25,6 +26,11 @@ namespace Scott
             }
             if (Input.GetAxis("Fire1")>0&&!pickupActive&&!fireDown)
             {
+                if(firePart.activeInHierarchy)
+                {
+                    firePart.SetActive(false);
+                }
+                firePart.SetActive(true);
                 fireDown=true;
                 Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
