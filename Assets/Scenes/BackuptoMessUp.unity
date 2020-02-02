@@ -16294,6 +16294,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.019615712, y: 0.0196157, z: 0.046967506}
   m_Center: {x: -0.00044669598, y: 0.0001174867, z: -0.007383191}
+--- !u!82 &1057573762 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1057573762, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1289704706}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1060115868 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7760102228970991213, guid: ca6ed01122fd35c4c9a9e87d2bb0458c,
@@ -20268,6 +20274,16 @@ PrefabInstance:
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 8604607240341377915}
+    - target: {fileID: 4740992585206274587, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+        type: 3}
+      propertyPath: victoryMusic
+      value: 
+      objectReference: {fileID: 8300000, guid: b10364fcd094139428fa6b9fe6fdad13, type: 3}
+    - target: {fileID: 4740992585206274587, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+        type: 3}
+      propertyPath: victorySource
+      value: 
+      objectReference: {fileID: 1057573762}
     - target: {fileID: 4740992585206274661, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20276,7 +20292,7 @@ PrefabInstance:
     - target: {fileID: 4740992585206274661, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 75.12
+      value: 71.82
       objectReference: {fileID: 0}
     - target: {fileID: 4740992585206274661, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
