@@ -272,8 +272,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weight: 10
-  throwStrength: 1600
-  throwError: 1
+  throwStrength: 2400
+  throwError: 0.25
   projectilePrefab: {fileID: 5445162018410629080, guid: 0ac411a6612240d4aa9801acd37a585c,
     type: 3}
   leftHand: {fileID: 472045316}
