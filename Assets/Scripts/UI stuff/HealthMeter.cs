@@ -8,8 +8,7 @@ namespace Peng {
         public List<Sprite> sprites;
 
         void Update() {
-            int amount = ((int)Mathf.Floor(Player.Me.Health));
-            GetComponent<Image>().sprite = sprites[amount];
+            GetComponent<Image>().sprite = sprites[((int)Mathf.Floor(Player.Me.Health)) - 1];
         }
     }
 }
