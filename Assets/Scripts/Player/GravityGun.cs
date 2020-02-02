@@ -11,6 +11,7 @@ namespace Scott
         private GameObject grabTarget;
         private bool fireDown;
         public float gravDistance;
+        public float grabbingDistance;
         public GameObject cam;
         public GameObject gravPoint;
         public float maxSnapDistance;
@@ -24,11 +25,14 @@ namespace Scott
             }
             if (Input.GetAxis("Fire1")>0&&!pickupActive&&!fireDown)
             {
+                Debug.Log("Fired");
                 fireDown=true;
-                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, 50f))
+                Debug.Log(ray);
+                if (Physics.Raycast(ray, out hit, grabbingDistance))
                 {
+                    Debug.Log("Hit");
                     if (hit.collider.gameObject.GetComponent<InteractiveObject>() != null)
                     {
                         pickupActive = true;
