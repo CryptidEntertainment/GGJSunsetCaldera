@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5102489443919618035}
   - component: {fileID: 5102489443919618030}
   - component: {fileID: 5102489443919618029}
-  - component: {fileID: 5102489443919618028}
   - component: {fileID: 5102489443919618031}
   - component: {fileID: 5102489443919618025}
   - component: {fileID: 5102489443919618024}
+  - component: {fileID: 2082725517966761502}
   m_Layer: 13
   m_Name: Enemy Shoots Badly
   m_TagString: Untagged
@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5102489443919618034}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 4300000, guid: 6839082202077c0478a109c6b51560ab, type: 3}
 --- !u!23 &5102489443919618029
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e984c9d960439b047aa60d3a72f796f1, type: 2}
+  - {fileID: 2100000, guid: e4205a6327e47b948b8ac62700ff2c79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5102489443919618028
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5102489443919618034}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5102489443919618031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -142,3 +129,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weight: 0
   moveSpeed: 2
+--- !u!136 &2082725517966761502
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102489443919618034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 3
+  m_Height: 5.1218743
+  m_Direction: 1
+  m_Center: {x: -0.0027501583, y: 2.5390623, z: -0.02613759}

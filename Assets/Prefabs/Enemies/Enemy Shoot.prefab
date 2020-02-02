@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 5102489443919618035}
   - component: {fileID: 5102489443919618030}
   - component: {fileID: 5102489443919618029}
-  - component: {fileID: 5102489443919618028}
   - component: {fileID: 5102489443919618031}
   - component: {fileID: 5102489443919618024}
   - component: {fileID: 720032516}
+  - component: {fileID: 8231537895134154144}
   m_Layer: 13
   m_Name: Enemy Shoot
   m_TagString: Untagged
@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e984c9d960439b047aa60d3a72f796f1, type: 2}
+  - {fileID: 2100000, guid: e4205a6327e47b948b8ac62700ff2c79, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -83,19 +83,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &5102489443919618028
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5102489443919618034}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &5102489443919618031
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -124,7 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fce2c13ef423e5045a2de196ba28eacf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 10
   moveSpeed: 2
 --- !u!114 &720032516
 MonoBehaviour:
@@ -138,8 +125,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b1de05941145f44a16d75e12ddc5e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weight: 0
+  weight: 10
   throwStrength: 1.5
   throwError: 1
   projectilePrefab: {fileID: 5445162018410629080, guid: 0ac411a6612240d4aa9801acd37a585c,
     type: 3}
+--- !u!136 &8231537895134154144
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5102489443919618034}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.5539817
+  m_Height: 5.121875
+  m_Direction: 1
+  m_Center: {x: 0.0035916567, y: 2.5390625, z: 0.015210032}
