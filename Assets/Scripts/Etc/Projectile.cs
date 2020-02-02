@@ -28,6 +28,10 @@ namespace Peng {
         }
 
         void OnTriggerEnter(Collider c) {
+            Player player = c.GetComponent<Player>();
+            if (player) {
+                player.Damage();
+            }
         }
     }
 }
