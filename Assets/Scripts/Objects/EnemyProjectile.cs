@@ -25,6 +25,10 @@ namespace Peng {
 
         void Start() {
             ScheduleNextAction();
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb) {
+                rb.useGravity = false;
+            }
             time = Random.Range(0f, 6.28f);
             targetLocation = transform.position;
             active = true;

@@ -31,6 +31,10 @@ namespace Peng {
         }
 
         void Start() {
+            Rigidbody rb = GetComponent<Rigidbody>();
+            if (rb) {
+                rb.useGravity = false;
+            }
             time = Random.Range(0f, 6.28f);
             waypointIndex = 0;
             waypointCooldown = 0;
@@ -73,7 +77,7 @@ namespace Peng {
             Player player = c.gameObject.GetComponent<Player>();
             if (player) {
                 player.Damage();
-                player.GetComponent<Rigidbody>().velocity = knockbackSpeed * (player.transform.position - transform.position);
+                player.GetComponent<Rigidbody>().AddForce(knockbackSpeed * Vector3.Normalize(player.transform.position - transform.position));
             } else if (state == RoombaStates.DISABLED) {
                 Die();
             }
@@ -84,7 +88,7 @@ namespace Peng {
         }
 
         private void Hover() {
-           // transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod) * Time.deltaTime;
+            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod) * Time.deltaTime;
         }
 
         private void DetectPlayer() {
