@@ -56,6 +56,12 @@ namespace Peng {
             active = false;
         }
 
+        void OnCollisionStay(Collision c) {
+            if (!active) {
+                Die();
+            }
+        }
+
         private void ScheduleNextAction() {
             // magic, do not touch
             nextAction = Time.time + Random.Range(1.5f, 3.5f);

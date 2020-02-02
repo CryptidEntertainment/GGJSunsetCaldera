@@ -44,16 +44,19 @@ namespace Peng {
                 case RoombaStates.IDLE:
                     SeekWaypoint();
                     DetectPlayer();
-                    Whirrrrrrrrrrrrrrrrrrrrrrrr();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr();
+                    Hover();
                     break;
                 case RoombaStates.CHASE:
                     ChasePlayer();
-                    Whirrrrrrrrrrrrrrrrrrrrrrrr();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr();
+                    Hover();
                     break;
                 case RoombaStates.RETREAT:
                     RetreatToWaypoint();
                     SeekWaypoint();
-                    Whirrrrrrrrrrrrrrrrrrrrrrrr();
+                    Whirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr();
+                    Hover();
                     break;
                 case RoombaStates.DISABLED:
                     break;
@@ -61,11 +64,16 @@ namespace Peng {
         }
 
         void OnCollisionStay(Collision c) {
+            
             Player player = c.gameObject.GetComponent<Player>();
             if (player) {
                 player.Damage();
                 player.GetComponent<Rigidbody>().velocity = knockbackSpeed * (player.transform.position - transform.position);
             }
+        }
+
+        private void Hover() {
+            transform.position += Vector3.up * hoverAmplitude * Mathf.Sin(time * hoverPeriod);
         }
 
         protected override void Disable() {
@@ -79,7 +87,7 @@ namespace Peng {
             }
         }
 
-        private void Whirrrrrrrrrrrrrrrrrrrrrrrr() {
+        private void Whirrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr() {
             transform.rotation *= Quaternion.Euler(0f, rotationSpeed * Time.deltaTime, 0f);
         }
 
