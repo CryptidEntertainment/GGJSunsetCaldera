@@ -38,6 +38,8 @@ namespace Peng {
         public float runModifier = 2f;
         public int maxHealth = 3;
 
+        public AudioClip victoryMusic;
+        public AudioSource victorySource;
         public GameObject winScreen;
 
         public int Health {
@@ -103,6 +105,17 @@ namespace Peng {
             Mode = GameStates.TITLE;
             SetCursorLock(false);
             winScreen.GetComponent<WinScreen>().Activate();
+
+            AudioSource[] musics = GetComponentsInChildren<AudioSource>();
+            foreach (AudioSource ms in musics) {
+                ms.gameObject.SetActive(false);
+            }
+
+            victorySource.gameObject.SetActive(true);
+            victorySource.Stop();
+            victorySource.clip = victoryMusic;
+            victorySource.Play();
+            victorySource.volume = 0.65f;
         }
 
         public void EnterPlayMode() {

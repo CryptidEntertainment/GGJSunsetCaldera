@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Peng;
+
 namespace Scott
 {
     public class InteractiveObject : MonoBehaviour, IMortal
@@ -60,7 +62,7 @@ namespace Scott
             {
                 prevPos = currentPos;
                 currentPos = transform.position;
-                if (!Physics.Linecast(transform.position, moveTarget.transform.position))
+                if (!Physics.Linecast(transform.position, moveTarget.transform.position, ((int)CollisionMasks.DEFAULT) | ((int)CollisionMasks.TERRAIN)))
                 {
                     this.transform.position = new Vector3(Mathf.Lerp(currentPos.x, moveTarget.transform.position.x, lerpRate), Mathf.Lerp(currentPos.y, moveTarget.transform.position.y, lerpRate), Mathf.Lerp(currentPos.z, moveTarget.transform.position.z, lerpRate));
                     lastValid = this.transform.position;
