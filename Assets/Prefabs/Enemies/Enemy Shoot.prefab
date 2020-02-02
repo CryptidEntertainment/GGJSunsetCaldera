@@ -278,8 +278,8 @@ MonoBehaviour:
     type: 3}
   leftHand: {fileID: 472045316}
   rightHand: {fileID: 121878713}
-  moveSpeed: 1
-  hoverRange: 1
+  moveSpeed: 4
+  hoverRange: 16
   hoverAmplitude: 1
   hoverPeriod: 1
 --- !u!136 &8231537895134154144

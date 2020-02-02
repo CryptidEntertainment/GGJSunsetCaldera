@@ -73,8 +73,13 @@ namespace Peng {
         }
 
         private void ScheduleNextAction() {
+            // find the next place you want to move to
+            float moveDistance = Random.Range(0.75f, 1f) * hoverRange;
+            float moveAngle = Random.Range(0f, 360f);
+            targetLocation = transform.position + Quaternion.Euler(0f, moveAngle, 0f) * Vector3.forward * moveDistance;
+            transform.rotation = Quaternion.Euler(0f, moveAngle, 0f);
             // magic, do not touch
-            nextAction = Time.time + Random.Range(1.5f, 3.5f);
+            nextAction = Time.time + Random.Range(3f, 6f);
         }
 
         /// <summary>
