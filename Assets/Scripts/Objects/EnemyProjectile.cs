@@ -26,6 +26,8 @@ namespace Peng {
         void Start() {
             ScheduleNextAction();
             time = Random.Range(0f, 6.28f);
+            targetLocation = transform.position;
+            active = true;
         }
 
         void Update() {
@@ -73,8 +75,7 @@ namespace Peng {
 
         public override void Die() {
             base.Die();
-            targetLocation = transform.position;
-            nextAction = Time.time + 1;
+            Start();
         }
     }
 }
