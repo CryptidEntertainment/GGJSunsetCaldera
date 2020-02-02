@@ -12,7 +12,7 @@ namespace Scott
         public AudioClip setClip;
         private float vol1;
         private float vol2;
-        public float crossfadeTime;
+        public float crossfadeTime = 3f;
         private float musicTriggerTime;
         private bool fading;
 
