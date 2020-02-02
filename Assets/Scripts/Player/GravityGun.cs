@@ -49,6 +49,7 @@ namespace Scott
                 fireDown = true;
                 pickupActive = false;
                 grabTarget.GetComponent<InteractiveObject>().drop();
+                grabTarget = null;
             }
         }
 
@@ -56,6 +57,13 @@ namespace Scott
         {
             pickupActive = false;
             grabTarget.GetComponent<InteractiveObject>().drop();
+            grabTarget = null;
+        }
+
+        public void grabbedDestroyed()
+        {
+            pickupActive = false;
+            grabTarget = null;
         }
 
     }
