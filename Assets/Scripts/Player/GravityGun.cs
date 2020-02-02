@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using Peng;
+
 namespace Scott
 {
     public class GravityGun : MonoBehaviour
@@ -19,37 +21,12 @@ namespace Scott
 
         void Update()
         {
-            gravPoint.transform.position = cam.transform.position + cam.transform.forward * gravDistance;
-            if (Input.GetAxis("Fire1")<1&&fireDown)
-            {
-                fireDown = false;
-            }
-            if (Input.GetAxis("Fire1")>0&&!pickupActive&&!fireDown)
-            {
-                if(firePart.activeInHierarchy)
-                {
-                    firePart.SetActive(false);
-                }
-                firePart.SetActive(true);
-                fireDown=true;
-                Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit, grabbingDistance))
-                {
-                    if (hit.collider.gameObject.GetComponent<InteractiveObject>() != null)
-                    {
-                        pickupActive = true;
-                        grabTarget = hit.collider.gameObject;
-                        grabTarget.GetComponent<InteractiveObject>().pickup(gravPoint, this);
-                    }
-                }
-            }
-            else if (Input.GetAxis("Fire1")>0&&pickupActive&&!fireDown)
-            {
-                fireDown = true;
-                pickupActive = false;
-                grabTarget.GetComponent<InteractiveObject>().drop();
-                grabTarget = null;
+            switch (GetComponent<Player>().Mode) {
+                case GameStates.TITLE:
+                    break;
+                case GameStates.PLAY:
+                    UpdateGameplay();
+                    break;
             }
         }
 
@@ -66,5 +43,32 @@ namespace Scott
             grabTarget = null;
         }
 
+        private void UpdateGameplay() {
+            gravPoint.transform.position = cam.transform.position + cam.transform.forward * gravDistance;
+            if (Input.GetAxis("Fire1") < 1 && fireDown) {
+                fireDown = false;
+            }
+            if (Input.GetAxis("Fire1") > 0 && !pickupActive && !fireDown) {
+                if (firePart.activeInHierarchy) {
+                    firePart.SetActive(false);
+                }
+                firePart.SetActive(true);
+                fireDown = true;
+                Ray ray = cam.GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+                RaycastHit hit;
+                if (Physics.Raycast(ray, out hit, grabbingDistance)) {
+                    if (hit.collider.gameObject.GetComponent<InteractiveObject>() != null) {
+                        pickupActive = true;
+                        grabTarget = hit.collider.gameObject;
+                        grabTarget.GetComponent<InteractiveObject>().pickup(gravPoint, this);
+                    }
+                }
+            } else if (Input.GetAxis("Fire1") > 0 && pickupActive && !fireDown) {
+                fireDown = true;
+                pickupActive = false;
+                grabTarget.GetComponent<InteractiveObject>().drop();
+                grabTarget = null;
+            }
+        }
     }
 }
