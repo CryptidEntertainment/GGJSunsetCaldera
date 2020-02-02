@@ -19343,6 +19343,11 @@ PrefabInstance:
       propertyPath: firePart
       value: 
       objectReference: {fileID: 1004764887}
+    - target: {fileID: 4740992585206274587, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+        type: 3}
+      propertyPath: maxHealth
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4740992585206274661, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
       propertyPath: m_LocalPosition.x
