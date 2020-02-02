@@ -166,14 +166,19 @@ namespace Peng {
         }
         #endregion
 
-        public void Damage(int amount = 1) {
+        public void Damage(int amount = 1, float iFrames = -1f) {
             if (IFrames > 0) {
                 return;
             }
 
-            health = health - amount;
-            IFrames = maxIFrames;
+            if (iFrames > 0) {
+                IFrames = iFrames;
+            } else {
+                IFrames = maxIFrames;
+            }
 
+            health = Mathf.Min(health - amount, maxHealth);
+            
             if (health <= 0) {
                 Die();
             }
