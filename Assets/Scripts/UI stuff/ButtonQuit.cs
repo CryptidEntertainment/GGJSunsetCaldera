@@ -16,7 +16,7 @@ public class ButtonQuit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandl
         GetComponent<Image>().sprite = baseSprite;
     }
 
-    public void Play() {
+    public void Quit() {
 
     }
 }
