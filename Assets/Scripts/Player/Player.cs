@@ -42,6 +42,8 @@ namespace Peng {
         private int health;
 
         private Camera mainCamera;
+        private Vector3 originalPosition;
+        private Quaternion originalRotation;
         private Quaternion rotation;
 
         public float IFrames {
@@ -55,10 +57,13 @@ namespace Peng {
             }
 
             Me = this;
+            health = maxHealth;
 
             mainCamera = GetComponentInChildren<Camera>();
             rotation = transform.rotation;
             jumpsRemaining = maxJumpCount;
+            originalPosition = transform.position;
+            originalRotation = transform.rotation;
         }
 
         void FixedUpdate() {
@@ -168,17 +173,19 @@ namespace Peng {
 
             health = health - amount;
             IFrames = maxIFrames;
+
             if (health <= 0) {
                 Die();
             }
-            Debug.Log("Ow!");
         }
 
         /// <summary>
         /// Methods required by IMortal
         /// </summary>
         public void Die() {
-            Debug.Log("YOU TRIED");
+            transform.position = originalPosition;
+            transform.rotation = originalRotation;
+            health = maxHealth;
         }
     }
 }
