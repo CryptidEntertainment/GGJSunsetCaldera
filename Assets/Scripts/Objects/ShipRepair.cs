@@ -15,8 +15,6 @@ namespace Scott
             player = Peng.Player.Me;
             playerShip = player.GetComponent<Peng.PlayerShip>();
             gravGun = player.GetComponent<Scott.GravityGun>();
-            Debug.Log(player);
-            Debug.Log(gravGun);
         }
 
         // Update is called once per frame
