@@ -8,17 +8,22 @@ namespace Scott
 {
     public class GravityGun : MonoBehaviour
     {
-        private bool pickupActive;
         RaycastResult rayHit;
-        private GameObject grabTarget;
-        private bool fireDown;
         public float gravDistance;
         public float grabbingDistance;
         public GameObject cam;
-        public GameObject gravPoint;
         public float maxSnapDistance;
         public GameObject firePart;
         public AudioSource aS;
+        
+        private bool pickupActive;
+        private bool fireDown;
+        private GameObject grabTarget;
+        private GameObject gravPoint;
+        
+        void Awake() {
+            gravPoint = new GameObject("Gravity Point");
+        }
 
         void Update()
         {
@@ -74,9 +79,11 @@ namespace Scott
             {
 
             }
+            // release
             if (Input.GetAxis("Fire1") < 1 && fireDown) {
                 fireDown = false;
             }
+            // press - grab
             if (Input.GetAxis("Fire1") > 0 && !pickupActive && !fireDown) {
                 if (firePart.activeInHierarchy) {
                     firePart.SetActive(false);
@@ -94,6 +101,7 @@ namespace Scott
                         grabTarget.GetComponent<InteractiveObject>().pickup(gravPoint, this);
                     }
                 }
+            // press - fling
             } else if (Input.GetAxis("Fire1") > 0 && pickupActive && !fireDown) {
                 fireDown = true;
                 pickupActive = false;
