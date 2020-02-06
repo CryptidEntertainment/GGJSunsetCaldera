@@ -20258,11 +20258,6 @@ PrefabInstance:
       propertyPath: steeringChecked
       value: 
       objectReference: {fileID: 737780075}
-    - target: {fileID: 2901182420921130381, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4740992585206274584, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
       propertyPath: m_Name
@@ -20353,10 +20348,10 @@ PrefabInstance:
       propertyPath: m_CullingMask.m_Bits
       value: 46903
       objectReference: {fileID: 0}
-    - target: {fileID: 6981235238554105728, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+    - target: {fileID: 9043280596480614041, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
-      propertyPath: Loop
-      value: 1
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c, type: 3}
