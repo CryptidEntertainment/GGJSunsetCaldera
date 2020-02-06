@@ -17,6 +17,8 @@ namespace Peng {
         PLAYER                  = 0x0400,
         GUN                     = 0x0800,
         DEATH                   = 0x1000,
+        MUSIC                   = 0x2000,
+        PICKUP                  = 0x4000,
     }
 
     public enum GameStates {
