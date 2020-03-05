@@ -24,11 +24,11 @@ This is probably how the game got its name
 
 It's more aerodynamic than it looks
 
-<img src="https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2020/02/260868/screenshot3_1.png" width="320">
+<img src="https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2020/02/260868/screenshot11.png" width="320">
 
 Swim at your own risk
 
-<img src="https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2020/02/260868/screenshot11.png" width="320">
+<img src="https://ggj.s3.amazonaws.com/styles/game_content__wide/games/screenshots/2020/02/260868/screenshot3_1.png" width="320">
 
 He doesn't have a care in the world:
 
