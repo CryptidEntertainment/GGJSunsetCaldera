@@ -8,10 +8,18 @@ namespace Peng {
         public Sprite altSprite;
 
         public void OnPointerEnter(PointerEventData eventData) {
-            GetComponent<Image>().sprite = altSprite;
+            SetAltSprite();
         }
 
         public void OnPointerExit(PointerEventData eventData) {
+            SetBaseSprite();
+        }
+
+        public void SetAltSprite() {
+            GetComponent<Image>().sprite = altSprite;
+        }
+
+        public void SetBaseSprite() {
             GetComponent<Image>().sprite = baseSprite;
         }
     }
