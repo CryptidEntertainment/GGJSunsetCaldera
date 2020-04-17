@@ -83,8 +83,6 @@ namespace Peng {
             }
         }
 
-        private bool lockCursor = true;
-        private bool mlMode = true;
         private int maxJumpCount = 2;
         private int jumpsRemaining;
         private float maxIFrames = 1.5f;
@@ -174,10 +172,8 @@ namespace Peng {
             float mouseVertical = Input.GetAxis("Mouse Y");
             bool jump = Input.GetButtonDown("Jump");
 
-            if (mlMode) {
-                if (lockCursor) CameraLook(mouseHorizontal, mouseVertical);
-                UpdateCursorLock();
-            }
+            CheckPause();
+            CameraLook(mouseHorizontal, mouseVertical);
 
             if (jump && (JumpAvailable() || JUMP_INFINITE || jumpsRemaining > 0)) {
                 Jump();
@@ -229,28 +225,20 @@ namespace Peng {
 
         private void SetCursorLock(bool value) {
             //this is called internally to do the locking and unlocking when you want to lock or unlock the cursor.
-            lockCursor = value;
-            if (lockCursor) {
-                Cursor.lockState = CursorLockMode.Locked;
-                Cursor.visible = false;
-            } else {
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-            }
-        }
-
-        public void SetMLMode(bool value) {
-            //This is an external function to be called by other scripts to change into and out of mouselook mode entirely.
-            mlMode = value;
-            SetCursorLock(mlMode);
+            Cursor.lockState = value ? CursorLockMode.Locked : CursorLockMode.None;
+            Cursor.visible = !value;
         }
         #endregion
 
-        private void UpdateCursorLock() {
+        private void CheckPause() {
             //this checks every update if the player hit escape to unlock the mouse, or clicked back in.
             if (Input.GetButtonUp("Pause")) {
                 Mode = GameStates.PAUSE;
-            } else if (Input.GetButtonDown("Fire1")) {
+            }
+        }
+
+        private void CheckUnpause() {
+            if (Input.GetButtonDown("Fire1")) {
                 Mode = GameStates.PLAY;
             }
         }
