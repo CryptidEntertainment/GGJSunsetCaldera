@@ -1,11 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 namespace Peng {
-    public class ButtonQuit : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    public class Button : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
         public Sprite baseSprite;
         public Sprite altSprite;
 
@@ -15,10 +13,6 @@ namespace Peng {
 
         public void OnPointerExit(PointerEventData eventData) {
             GetComponent<Image>().sprite = baseSprite;
-        }
-
-        public void Quit() {
-            Application.Quit();
         }
     }
 }

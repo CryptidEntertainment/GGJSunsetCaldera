@@ -44,6 +44,7 @@ namespace Peng {
         public AudioSource victorySource;
         public GameObject winScreen;
 
+        public GameObject[] titleStuff;
         public GameObject[] gameplayStuff;
         public GameObject[] pauseStuff;
 
@@ -65,6 +66,9 @@ namespace Peng {
                             obj.SetActive(true);
                         }
                         foreach (GameObject obj in pauseStuff) {
+                            obj.SetActive(false);
+                        }
+                        foreach (GameObject obj in titleStuff) {
                             obj.SetActive(false);
                         }
                         break;
@@ -151,7 +155,14 @@ namespace Peng {
 
         public void EnterPlayMode() {
             Mode = GameStates.PLAY;
-            SetCursorLock(true);
+        }
+
+        public void EnterPauseMode() {
+            Mode = GameStates.PAUSE;
+        }
+
+        public void EnterQuitMode() {
+            Application.Quit();
         }
 
         private void FixedUpdateGameplay() {
