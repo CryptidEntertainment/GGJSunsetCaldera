@@ -22,7 +22,7 @@ namespace Peng {
     }
 
     public enum GameStates {
-        TITLE, PLAY
+        TITLE, PLAY, PAUSE
     }
 
     public class Player : MonoBehaviour, IMortal {
@@ -85,20 +85,20 @@ namespace Peng {
 
         void FixedUpdate() {
             switch (Mode) {
-                case GameStates.TITLE:
-                    break;
                 case GameStates.PLAY:
                     FixedUpdateGameplay();
+                    break;
+                default:
                     break;
             }
         }
 
         void Update() {
             switch (Mode) {
-                case GameStates.TITLE:
-                    break;
                 case GameStates.PLAY:
                     UpdateGameplay();
+                    break;
+                default:
                     break;
             }
         }
