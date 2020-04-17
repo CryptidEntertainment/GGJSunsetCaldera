@@ -131,6 +131,9 @@ namespace Peng {
                 case GameStates.PLAY:
                     UpdateGameplay();
                     break;
+                case GameStates.PAUSE:
+                    UpdatePause();
+                    break;
                 default:
                     break;
             }
@@ -195,6 +198,10 @@ namespace Peng {
             transform.position = GetComponentInChildren<Rigidbody>().transform.position;
         }
 
+        private void UpdatePause() {
+            CheckUnpause();
+        }
+
         private void PlayerMovement(float horizontal, float vertical, float speedModifier) {
             // Movement
             if (Mathf.Sqrt(horizontal * horizontal + vertical * vertical) > 0) {
@@ -243,13 +250,13 @@ namespace Peng {
 
         private void CheckPause() {
             //this checks every update if the player hit escape to unlock the mouse, or clicked back in.
-            if (Input.GetButtonUp("Pause")) {
+            if (Input.GetButtonDown("Pause")) {
                 Mode = GameStates.PAUSE;
             }
         }
 
         private void CheckUnpause() {
-            if (Input.GetButtonDown("Fire1")) {
+            if (Input.GetButtonDown("Pause")) {
                 Mode = GameStates.PLAY;
             }
         }
