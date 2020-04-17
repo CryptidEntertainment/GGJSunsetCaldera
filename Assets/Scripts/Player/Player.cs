@@ -44,13 +44,44 @@ namespace Peng {
         public AudioSource victorySource;
         public GameObject winScreen;
 
+        public GameObject[] gameplayStuff;
+        public GameObject[] pauseStuff;
+
         public int Health {
             get; private set;
         }
 
+        private GameStates _mode = GameStates.TITLE;
         public GameStates Mode {
-            get; private set;
-        } = GameStates.TITLE;
+            get {
+                return _mode;
+            }
+            private set {
+                _mode = value;
+                switch (value) {
+                    case GameStates.PLAY:
+                        SetCursorLock(true);
+                        foreach (GameObject obj in gameplayStuff) {
+                            obj.SetActive(true);
+                        }
+                        foreach (GameObject obj in pauseStuff) {
+                            obj.SetActive(false);
+                        }
+                        break;
+                    case GameStates.PAUSE:
+                        SetCursorLock(false);
+                        foreach (GameObject obj in gameplayStuff) {
+                            obj.SetActive(false);
+                        }
+                        foreach (GameObject obj in pauseStuff) {
+                            obj.SetActive(true);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
 
         private bool lockCursor = true;
         private bool mlMode = true;
@@ -213,16 +244,16 @@ namespace Peng {
             mlMode = value;
             SetCursorLock(mlMode);
         }
+        #endregion
 
         private void UpdateCursorLock() {
             //this checks every update if the player hit escape to unlock the mouse, or clicked back in.
             if (Input.GetButtonUp("Pause")) {
-                SetCursorLock(false);
+                Mode = GameStates.PAUSE;
             } else if (Input.GetButtonDown("Fire1")) {
-                SetCursorLock(true);
+                Mode = GameStates.PLAY;
             }
         }
-        #endregion
 
         public void Damage(int amount = 1, float iFrames = -1f) {
             if (IFrames > 0) {

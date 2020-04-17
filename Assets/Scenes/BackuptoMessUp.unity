@@ -20730,6 +20730,16 @@ PrefabInstance:
       objectReference: {fileID: 1004764887}
     - target: {fileID: 4740992585206274587, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
+      propertyPath: gameplayStuff.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740992585206274587, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+        type: 3}
+      propertyPath: pauseStuff.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4740992585206274587, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+        type: 3}
       propertyPath: winScreen
       value: 
       objectReference: {fileID: 8604607240341377915}
@@ -20743,6 +20753,16 @@ PrefabInstance:
       propertyPath: victorySource
       value: 
       objectReference: {fileID: 1057573762}
+    - target: {fileID: 4740992585206274587, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+        type: 3}
+      propertyPath: gameplayStuff.Array.data[0]
+      value: 
+      objectReference: {fileID: 2061779481}
+    - target: {fileID: 4740992585206274587, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
+        type: 3}
+      propertyPath: pauseStuff.Array.data[0]
+      value: 
+      objectReference: {fileID: 1201001043}
     - target: {fileID: 4740992585206274661, guid: 2ecacf9e60dab8a43a62c25e9a3ab79c,
         type: 3}
       propertyPath: m_LocalPosition.x
