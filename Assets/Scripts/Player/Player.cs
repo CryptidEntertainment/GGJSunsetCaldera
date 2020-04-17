@@ -22,7 +22,7 @@ namespace Peng {
     }
 
     public enum GameStates {
-        TITLE, PLAY, PAUSE
+        TITLE, PLAY, PAUSE, ABOUT
     }
 
     public class Player : MonoBehaviour, IMortal {
@@ -44,9 +44,10 @@ namespace Peng {
         public AudioSource victorySource;
         public GameObject winScreen;
 
-        public GameObject[] titleStuff;
-        public GameObject[] gameplayStuff;
-        public GameObject[] pauseStuff;
+        public GameObject titleStuff;
+        public GameObject gameplayStuff;
+        public GameObject pauseStuff;
+        public GameObject aboutStuff;
 
         public int Health {
             get; private set;
@@ -60,28 +61,33 @@ namespace Peng {
             private set {
                 _mode = value;
                 switch (value) {
+                    case GameStates.TITLE:
+                        SetCursorLock(false);
+                        titleStuff.SetActive(true);
+                        gameplayStuff.SetActive(false);
+                        pauseStuff.SetActive(false);
+                        aboutStuff.SetActive(false);
+                        break;
                     case GameStates.PLAY:
                         SetCursorLock(true);
-                        foreach (GameObject obj in gameplayStuff) {
-                            obj.SetActive(true);
-                        }
-                        foreach (GameObject obj in pauseStuff) {
-                            obj.SetActive(false);
-                        }
-                        foreach (GameObject obj in titleStuff) {
-                            obj.SetActive(false);
-                        }
+                        titleStuff.SetActive(false);
+                        gameplayStuff.SetActive(true);
+                        pauseStuff.SetActive(false);
+                        aboutStuff.SetActive(false);
                         break;
                     case GameStates.PAUSE:
                         SetCursorLock(false);
-                        foreach (GameObject obj in gameplayStuff) {
-                            obj.SetActive(false);
-                        }
-                        foreach (GameObject obj in pauseStuff) {
-                            obj.SetActive(true);
-                        }
+                        titleStuff.SetActive(false);
+                        gameplayStuff.SetActive(false);
+                        pauseStuff.SetActive(true);
+                        aboutStuff.SetActive(false);
                         break;
-                    default:
+                    case GameStates.ABOUT:
+                        SetCursorLock(false);
+                        titleStuff.SetActive(false);
+                        gameplayStuff.SetActive(false);
+                        pauseStuff.SetActive(false);
+                        aboutStuff.SetActive(true);
                         break;
                 }
             }
@@ -132,6 +138,7 @@ namespace Peng {
                     UpdateGameplay();
                     break;
                 case GameStates.PAUSE:
+                case GameStates.ABOUT:
                     UpdatePause();
                     break;
                 default:
@@ -162,6 +169,10 @@ namespace Peng {
 
         public void EnterPauseMode() {
             Mode = GameStates.PAUSE;
+        }
+
+        public void EnterAboutMode() {
+            Mode = GameStates.ABOUT;
         }
 
         public void EnterQuitMode() {
