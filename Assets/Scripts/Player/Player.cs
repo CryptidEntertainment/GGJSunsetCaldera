@@ -277,6 +277,11 @@ namespace Peng {
                 return;
             }
 
+            Hitflash[] hitflashes = ((Hitflash[])FindObjectsOfType(typeof(Hitflash)));
+            foreach (Hitflash flash in hitflashes) {
+                flash.Activate();
+            }
+
             if (iFrames > 0) {
                 IFrames = iFrames;
             } else {
